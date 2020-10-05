@@ -15,52 +15,70 @@ namespace Class { /* Как изменить пространство имен? */
 			return true;
 	}
 
+
 	// Инициализирующий конструктор без значений по умолчанию
-	Catenary::Catenary(const Point& p, const Point& l_limit, const Point& r_limit) {
-		if (!p.check())
-			// Класс исключения стандартной библиотеки
-			throw std::exception("Ордината вершины может быть только положительной. Попробуйте еще раз: ");
-		Catenary::p = p;
-		if (l_limit.x <= r_limit.x) {
-			// Можно через указатель this
-			this->l_limit = l_limit;
-			this->r_limit = r_limit;
-		}
-		else {
-			// А можно через разрешение видимости
-			Catenary::l_limit = r_limit;
-			Catenary::r_limit = l_limit;
-		}
+	Catenary::Catenary(const Point& p0, Type x1, Type x2) {
+		if (!p0.check())
+			throw std::exception("Сказано же : ордината строго положительна. Попробуйте еще раз.");
+		p = p0;
+		Catenary::setL(x1, x2);
 	}
 
-	Catenary& Catenary::setL(const Point& l_limit, const Point& r_limit) {
-		if (l_limit.x <= r_limit.x) {
+
+	// Сеттер для изменения границ
+	Catenary& Catenary::setL(Type x1, Type x2) {
+		Type y1 = ordinate(x1);
+		Type y2 = ordinate(x2);
+		if (x1 <= x2) {
 			// Можно через указатель this
-			this->l_limit = l_limit;
-			this->r_limit = r_limit;
+			this->l_limit.x = x1;
+			this->l_limit.y = y1;
+			this->r_limit.x = x2;
+			this->r_limit.y = y2;
 		}
 		else {
 			// А можно через разрешение видимости
-			Catenary::l_limit = r_limit;
-			Catenary::r_limit = r_limit;
+			Catenary::l_limit.x = x2;
+			Catenary::l_limit.y = y2;
+			Catenary::r_limit.x = x1;
+			Catenary::r_limit.y = y1;
 		}
 		return *this;
 	}
 
-	// п.4: длина дуги цепной линии от ее проекции на оси абсцисс
-	Type Catenary::length(const Point& p) const {
-		return sqrt(pow(p.y, 2) - pow(Catenary::p.y, 2));
+
+	// Сеттер для изменения вершины 
+	Catenary& Catenary::setP(const Point& p0) {
+		if (!p0.check())
+			throw std::exception("Сказано же : ордината строго положительна. Попробуйте еще раз.");
+		p = p0;
+		Catenary::setL(l_limit.x, r_limit.x);
+		return *this;
 	}
 
-	// п.5: радиус кривизны цепной линии от ее проекции относительно координаты по оси абсцисс
-	Type Catenary::radius(const Point& p) const {
-		return (pow(p.y, 2) / Catenary::p.y);
+
+	// Возвращает значение ординаты по значению абсциссы
+	Type Catenary::ordinate(Type x) const {
+		return (p.y * (cosh((x - p.x) / p.y)));
+	}
+
+
+	// п.4: длина дуги цепной линии от ее проекции на оси абсцисс
+	Type Catenary::length() const {
+		Type l1 = sqrt(pow(l_limit.y, 2) - pow(p.y, 2));
+		Type l2 = sqrt(pow(r_limit.y, 2) - pow(p.y, 2));
+		return (l1 + l2);
+	}
+
+	// п.5: радиус кривизны цепной линии относительно координаты по оси абсцисс
+	Type Catenary::radius(Type x) const {
+		return (pow(ordinate(x), 2) / p.y);
 	}
 
 	// п.6: координаты центра кривизны цепной динии в ДСК относительно координаты по оси абсцисс
-	Point Catenary::center(const Point& p) const {
-		Type ch = cosh(p.x / Catenary::p.y);
-		Type sh = sinh(p.x / Catenary::p.y);
+	Point Catenary::center(Type x) const {
+		Type ch = cosh(x / Catenary::p.y);
+		Type sh = sinh(x / Catenary::p.y);
 		Point res;
 		res.x = Catenary::p.y * (ch * sh + log(ch - sh));
 		res.y = 2 * Catenary::p.y * ch;
@@ -69,7 +87,7 @@ namespace Class { /* Как изменить пространство имен? */
 
 	// п.7: площадь криволинейной трапеции, образованной цепной линией и ее проекцией на ось абсцисс
 	Type Catenary::area() const {
-		return (Catenary::p.y * (sqrt(pow(Catenary::l_limit.y, 2) - pow(Catenary::p.y, 2)) - (sqrt(pow(Catenary::r_limit.y, 2) - pow(Catenary::p.y, 2)))));
+		return (p.y * (sqrt(pow(l_limit.y, 2) - pow(p.y, 2)) - (sqrt(pow(r_limit.y, 2) - pow(p.y, 2)))));
 	}
 
 }

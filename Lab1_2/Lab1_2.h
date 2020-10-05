@@ -23,9 +23,11 @@ namespace Lab1_2 {
 
 
 	// Прототипы остальных функций
-	int dialog(const char* msgs[], int N);			// Организация диалога
+	Class::Catenary Input();					// Первая инициализация состояния класса "Цепная линия"
+	int dialog(const char* msgs[], int N);		// Организация диалога
+	int D_GetStatus(const Class::Catenary&);	// Получение информации о состоянии класса "Цепная линия": коор-ты вершины и границ
 	// Диалоговые функции работы с классом "Цепная линия"
-	int D_SetPoint(Class::Catenary&);			// "1. Ввести новые координаты вершины"
+	int D_SetVertex(Class::Catenary&);			// "1. Ввести новые координаты вершины"
 	int D_SetBorders(Class::Catenary&);			// "2. Ввести новые границы цепи"
 	int D_GetOrdinate(Class::Catenary&);		// "3. Вернуть ординату цепной линии по значению абсциссы"
 	int D_GetLength(Class::Catenary&);			// "4. Вернуть длину дуги цепной линии от ее проекции на оси абсцисс"
