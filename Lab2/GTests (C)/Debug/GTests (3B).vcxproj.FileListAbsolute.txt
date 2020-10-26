@@ -1,5 +1,0 @@
-C:\Users\vladi\OneDrive\Рабочий стол\C++\Мои\Лаба 3\GTests (3B)\Debug\GTests (3B).vcxproj.CopyComplete
-C:\Users\vladi\OneDrive\Рабочий стол\C++\Мои\Лаба 3\GTests (3B)\Debug\GTests (3B).exe
-C:\Users\vladi\OneDrive\Рабочий стол\C++\Мои\Лаба 3\GTests (3B)\Debug\GTests (3B).pdb
-C:\Users\vladi\OneDrive\Рабочий стол\C++\Мои\Лаба 3\GTests (3B)\Debug\gtest.pdb
-C:\Users\vladi\OneDrive\Рабочий стол\C++\Мои\Лаба 3\GTests (3B)\Debug\gtest_main.pdb

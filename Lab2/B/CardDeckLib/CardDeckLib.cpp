@@ -1,4 +1,8 @@
-﻿#include "CardDeckLib.h"
+﻿
+#include "pch.h"
+#include "framework.h"
+
+#include "CardDeckLib.h"
 #include <exception>
 #include <stdio.h>
 #include <ctime>

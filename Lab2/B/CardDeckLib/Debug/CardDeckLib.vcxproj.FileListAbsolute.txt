@@ -1,4 +1,2 @@
-C:\Users\vladi\OneDrive\Рабочий стол\C++\Мои\Лаба 3\A\CardDeckLib\Debug\CardDeckLib.lib
-C:\Users\vladi\OneDrive\Рабочий стол\C++\Мои\Лаба 3\A\CardDeckLib\Debug\CardDeckLib.pdb
-C:\Users\vladi\OneDrive\Рабочий стол\C++\Мои\Лаба 3\Б\CardDeckLib\Debug\CardDeckLib.lib
-C:\Users\vladi\OneDrive\Рабочий стол\C++\Мои\Лаба 3\Б\CardDeckLib\Debug\CardDeckLib.pdb
+C:\Users\vladi\OneDrive\Рабочий стол\C++\Мои\git\Lab2\B\CardDeckLib\Debug\CardDeckLib.lib
+C:\Users\vladi\OneDrive\Рабочий стол\C++\Мои\git\Lab2\B\CardDeckLib\Debug\CardDeckLib.pdb
