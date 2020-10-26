@@ -1,0 +1,12 @@
+﻿  Lab2_A.cpp
+  Lab2_Amain.cpp
+  Создание кода...
+Lab2_A.obj : error LNK2019: ссылка на неразрешенный внешний символ "public: __cdecl CardDeckClass::CardDeck::CardDeck(void)" (??0CardDeck@CardDeckClass@@QEAA@XZ) в функции "class CardDeckClass::CardDeck __cdecl Lab2_A::Input(void)" (?Input@Lab2_A@@YA?AVCardDeck@CardDeckClass@@XZ).
+Lab2_A.obj : error LNK2019: ссылка на неразрешенный внешний символ "public: __cdecl CardDeckClass::CardDeck::CardDeck(int)" (??0CardDeck@CardDeckClass@@QEAA@H@Z) в функции "class CardDeckClass::CardDeck __cdecl Lab2_A::Input(void)" (?Input@Lab2_A@@YA?AVCardDeck@CardDeckClass@@XZ).
+Lab2_Amain.obj : error LNK2001: неразрешенный внешний символ "public: __cdecl CardDeckClass::CardDeck::CardDeck(int)" (??0CardDeck@CardDeckClass@@QEAA@H@Z).
+Lab2_A.obj : error LNK2019: ссылка на неразрешенный внешний символ "public: __cdecl CardDeckClass::CardDeck::CardDeck(int,int)" (??0CardDeck@CardDeckClass@@QEAA@HH@Z) в функции "class CardDeckClass::CardDeck __cdecl Lab2_A::Input(void)" (?Input@Lab2_A@@YA?AVCardDeck@CardDeckClass@@XZ).
+Lab2_A.obj : error LNK2019: ссылка на неразрешенный внешний символ "class std::basic_istream<char,struct std::char_traits<char> > & __cdecl CardDeckClass::operator>>(class std::basic_istream<char,struct std::char_traits<char> > &,class CardDeckClass::CardDeck &)" (??5CardDeckClass@@YAAEAV?$basic_istream@DU?$char_traits@D@std@@@std@@AEAV12@AEAVCardDeck@0@@Z) в функции "class CardDeckClass::CardDeck __cdecl Lab2_A::Input(void)" (?Input@Lab2_A@@YA?AVCardDeck@CardDeckClass@@XZ).
+Lab2_Amain.obj : error LNK2019: ссылка на неразрешенный внешний символ "public: class CardDeckClass::CardDeck & __cdecl CardDeckClass::CardDeck::GetSuitDeck(int)const " (?GetSuitDeck@CardDeck@CardDeckClass@@QEBAAEAV12@H@Z) в функции main.
+Lab2_Amain.obj : error LNK2019: ссылка на неразрешенный внешний символ "class std::basic_ostream<char,struct std::char_traits<char> > & __cdecl CardDeckClass::operator<<(class std::basic_ostream<char,struct std::char_traits<char> > &,class CardDeckClass::CardDeck const &)" (??6CardDeckClass@@YAAEAV?$basic_ostream@DU?$char_traits@D@std@@@std@@AEAV12@AEBVCardDeck@0@@Z) в функции main.
+C:\Users\vladi\OneDrive\Рабочий стол\C++\Мои\Лаба 3\A\CardDeckLib\Debug\CardDeckLib.lib : warning LNK4272: тип компьютера библиотеки "x86" конфликтует с типом целевого компьютера "x64"
+C:\Users\vladi\OneDrive\Рабочий стол\C++\Мои\Лаба 3\A\Lab2_A\x64\Debug\Lab2_A.exe : fatal error LNK1120: неразрешенных внешних элементов: 6
