@@ -1,0 +1,2 @@
+C:\Users\vladi\OneDrive\Рабочий стол\C++\Лаба 1\Lab1\Debug\Lab1.exe.lastcodeanalysissucceeded
+C:\Users\vladi\OneDrive\Рабочий стол\C++\Лаба 1\Lab1\Lab1\Debug\NativeCodeAnalysis.read.1.tlog
