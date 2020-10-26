@@ -4,7 +4,7 @@
 #include "gtest\gtest.h"
 #include "..\Lab1_2_GTest\CetaneryLib\CatenaryLib.h"
 
-// Тест пустого конструктора
+// РўРµСЃС‚ РїСѓСЃС‚РѕРіРѕ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂР°
 TEST(CetaneryConstructor, DefaultConstructor) {
 	Class::Catenary def;
 	ASSERT_EQ(0, def.getL_limit().x);
@@ -13,14 +13,14 @@ TEST(CetaneryConstructor, DefaultConstructor) {
 	ASSERT_EQ(1, def.getR_limit().y);
 }
 
-// Тест обработки исключения
+// РўРµСЃС‚ РѕР±СЂР°Р±РѕС‚РєРё РёСЃРєР»СЋС‡РµРЅРёСЏ
 TEST(CetaneryConstructor, InitTRROWConstructor) {
 	Class::Point p(3, -3);
 	ASSERT_ANY_THROW(Class::Catenary def(p, -2, 5));
 }
 
 
-// Тест инициализирующего конструктора
+// РўРµСЃС‚ РёРЅРёС†РёР°Р»РёР·РёСЂСѓСЋС‰РµРіРѕ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂР°
 TEST(CetaneryConstructor, InitConstructor) {
 	const Type err = 0.01;
 	Class::Point p(3, 3);
@@ -34,7 +34,7 @@ TEST(CetaneryConstructor, InitConstructor) {
 }
 
 
-// Тест сеттера setL
+// РўРµСЃС‚ СЃРµС‚С‚РµСЂР° setL
 TEST(CatenaryMethods, SetL) {
 	const Type err = 0.01;
 	Class::Point p(3, 5);
@@ -46,7 +46,7 @@ TEST(CatenaryMethods, SetL) {
 	ASSERT_NEAR(5.93, def.getR_limit().y, err);
 }
 
-// Тест возвращения ординаты
+// РўРµСЃС‚ РІРѕР·РІСЂР°С‰РµРЅРёСЏ РѕСЂРґРёРЅР°С‚С‹
 TEST(CatenaryMethods, Ordinate) {
 	const Type err = 0.01;
 	Type x = 6;
@@ -55,14 +55,14 @@ TEST(CatenaryMethods, Ordinate) {
 }
 
 
-// Тест возвращения длины дуги
+// РўРµСЃС‚ РІРѕР·РІСЂР°С‰РµРЅРёСЏ РґР»РёРЅС‹ РґСѓРіРё
 TEST(CatenaryMethods, Length) {
 	const Type err = 0.01;
 	Class::Catenary def({ 3,3 }, 2, 4);
 	ASSERT_NEAR(6.34, def.length(), err);
 }
 
-// Тест возвращения радиуса
+// РўРµСЃС‚ РІРѕР·РІСЂР°С‰РµРЅРёСЏ СЂР°РґРёСѓСЃР°
 TEST(CatenaryMethods, Radius) {
 	const Type err = 0.01;
 	Type x = 2;
@@ -70,7 +70,7 @@ TEST(CatenaryMethods, Radius) {
 	ASSERT_NEAR(3.35, def.radius(x), err);
 }
 
-// Тест возвращения координаты центра кривизны
+// РўРµСЃС‚ РІРѕР·РІСЂР°С‰РµРЅРёСЏ РєРѕРѕСЂРґРёРЅР°С‚С‹ С†РµРЅС‚СЂР° РєСЂРёРІРёР·РЅС‹
 TEST(CatenaryMethods, Center) {
 	const Type err = 0.01;
 	Type x = 5;
@@ -79,7 +79,7 @@ TEST(CatenaryMethods, Center) {
 	ASSERT_NEAR(16.45, def.center(x).y, err);
 }
 
-// Тест возвращения площади
+// РўРµСЃС‚ РІРѕР·РІСЂР°С‰РµРЅРёСЏ РїР»РѕС‰Р°РґРё
 TEST(CatenaryMethods, Area) {
 	const Type err = 0.01;
 	Type x = 6;
