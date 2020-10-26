@@ -1,0 +1,3 @@
+﻿  test.cpp
+CetaneryLib.lib(CetaneryLib.obj) : warning LNK4075: не учитывается "/EDITANDCONTINUE" из-за спецификации "/SAFESEH"
+  Lab1_2_GTest.vcxproj -> C:\Users\vladi\OneDrive\Рабочий стол\C++\Мои\Lab1_2_GTest\Debug\Lab1_2_GTest.exe

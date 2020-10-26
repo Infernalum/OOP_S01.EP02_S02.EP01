@@ -1,0 +1,5 @@
+C:\Users\vladi\OneDrive\Рабочий стол\C++\Мои\Lab1_2_GTest\Debug\Lab1_2_GTest.vcxproj.CopyComplete
+C:\Users\vladi\OneDrive\Рабочий стол\C++\Мои\Lab1_2_GTest\Debug\Lab1_2_GTest.exe
+C:\Users\vladi\OneDrive\Рабочий стол\C++\Мои\Lab1_2_GTest\Debug\Lab1_2_GTest.pdb
+C:\Users\vladi\OneDrive\Рабочий стол\C++\Мои\Lab1_2_GTest\Debug\gtest.pdb
+C:\Users\vladi\OneDrive\Рабочий стол\C++\Мои\Lab1_2_GTest\Debug\gtest_main.pdb

@@ -1,0 +1,2 @@
+C:\Users\vladi\OneDrive\Рабочий стол\C++\Мои\Lab1_2\CetaneryLib\Debug\CetaneryLib.lib
+C:\Users\vladi\OneDrive\Рабочий стол\C++\Мои\Lab1_2\CetaneryLib\Debug\CetaneryLib.pdb
