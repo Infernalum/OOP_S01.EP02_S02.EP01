@@ -16,10 +16,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Lab2_A.cpp">
-      <Filter>Исходные файлы</Filter>
+      <Filter>Файлы заголовков</Filter>
     </ClCompile>
     <ClCompile Include="Lab2_Amain.cpp">
-      <Filter>Исходные файлы</Filter>
+      <Filter>Файлы заголовков</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
