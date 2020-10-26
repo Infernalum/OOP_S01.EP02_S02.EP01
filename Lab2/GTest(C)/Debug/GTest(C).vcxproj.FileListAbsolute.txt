@@ -3,3 +3,8 @@ C:\Users\vladi\OneDrive\Рабочий стол\C++\Мои\git\Lab2\GTest(C)\Deb
 C:\Users\vladi\OneDrive\Рабочий стол\C++\Мои\git\Lab2\GTest(C)\Debug\GTest(C).pdb
 C:\Users\vladi\OneDrive\Рабочий стол\C++\Мои\git\Lab2\GTest(C)\Debug\gtest.pdb
 C:\Users\vladi\OneDrive\Рабочий стол\C++\Мои\git\Lab2\GTest(C)\Debug\gtest_main.pdb
+C:\Users\vladi\OneDrive\Рабочий стол\C++\Мои\Lab2\GTest(C)\Debug\GTest(C).vcxproj.CopyComplete
+C:\Users\vladi\OneDrive\Рабочий стол\C++\Мои\Lab2\GTest(C)\Debug\GTest(C).exe
+C:\Users\vladi\OneDrive\Рабочий стол\C++\Мои\Lab2\GTest(C)\Debug\GTest(C).pdb
+C:\Users\vladi\OneDrive\Рабочий стол\C++\Мои\Lab2\GTest(C)\Debug\gtest.pdb
+C:\Users\vladi\OneDrive\Рабочий стол\C++\Мои\Lab2\GTest(C)\Debug\gtest_main.pdb
