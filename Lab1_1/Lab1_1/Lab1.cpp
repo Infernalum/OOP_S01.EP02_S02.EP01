@@ -24,7 +24,7 @@ namespace Lab1 {
 	// Выбор номера альтернативы
 	int dialog(const char* msgs[], int N) {
 		const char* errmsgs = "";
-		int rc, i, n;
+		int rc, i;
 		do {
 			puts(errmsgs);
 			errmsgs = "Ошибка! Повторите ввод:!";
