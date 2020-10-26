@@ -1,7 +1,0 @@
-﻿  CardDeckLib.cpp
-C:\Users\vladi\OneDrive\Рабочий стол\C++\Мои\Лаба 3\A\CardDeckLib\CardDeckLib.cpp(29,14): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
-C:\Users\vladi\OneDrive\Рабочий стол\C++\Мои\Лаба 3\A\CardDeckLib\CardDeckLib.cpp(62,13): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
-C:\Users\vladi\OneDrive\Рабочий стол\C++\Мои\Лаба 3\A\CardDeckLib\CardDeckLib.cpp(108,44): error C2064: результатом вычисления фрагмента не является функция, принимающая 1 аргументов
-C:\Users\vladi\OneDrive\Рабочий стол\C++\Мои\Лаба 3\A\CardDeckLib\CardDeckLib.cpp(165,10): error C2064: результатом вычисления фрагмента не является функция, принимающая 1 аргументов
-C:\Users\vladi\OneDrive\Рабочий стол\C++\Мои\Лаба 3\A\CardDeckLib\CardDeckLib.cpp(167,9): error C2064: результатом вычисления фрагмента не является функция, принимающая 1 аргументов
-C:\Users\vladi\OneDrive\Рабочий стол\C++\Мои\Лаба 3\A\CardDeckLib\CardDeckLib.cpp(235,87): error C2064: результатом вычисления фрагмента не является функция, принимающая 1 аргументов
