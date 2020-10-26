@@ -1,5 +1,4 @@
 ﻿  Lab1.cpp
 C:\Users\vladi\OneDrive\Рабочий стол\C++\Мои\Lab1_1\Lab1_1\Lab1.cpp(27,14): warning C4101: n: неиспользованная локальная переменная
-  Lab1main.cpp
-  Создание кода...
+  LINK : не найден или не выполнена сборка C:\Users\vladi\OneDrive\Рабочий стол\C++\Мои\Lab1_1\Lab1_1\Debug\Lab1_1.exe при последней инкрементной компоновке; выполняется полная компоновка
   Lab1_1.vcxproj -> C:\Users\vladi\OneDrive\Рабочий стол\C++\Мои\Lab1_1\Lab1_1\Debug\Lab1_1.exe
