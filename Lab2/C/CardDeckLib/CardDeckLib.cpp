@@ -3,12 +3,11 @@
 #include <stdio.h>
 #include <ctime>
 
-
-const char* Rangs[] = { "Двойка", "Тройка", "Четвёрка", "Пятёрка", "Шестёрка", "Семёрка", "Восьмёрка", "Девятка", "Десятка", "Валет", "Дама", "Король", "Туз" };
-const char* Suits[] = { "Бубе", "Червей", "Пики", "Крести" };
-
 namespace CardDeckClass {
 
+	const char* CardDeck::Rangs[13] = { "Двойка", "Тройка", "Четвёрка", "Пятёрка", "Шестёрка", "Семёрка", "Восьмёрка", "Девятка", "Десятка", "Валет", "Дама", "Король", "Туз" };
+
+	const char* CardDeck::Suits[] = { "Бубе", "Червей", "Пики", "Крести" };
 
 	/* --------------------------------------------------------- */
 	/*				    	  Конструкторы					 	 */
@@ -265,7 +264,7 @@ namespace CardDeckClass {
 		else {
 			stream << "Маскимальный размер колоды на данный момент: " << deck.GetMaxSize() << '\n' << "Колода:\n";
 			for (int i = 0; i < deck.GetCurrentSize(); ++i) {
-				stream << i + 1 << ": " << Rangs[deck[i + 1] - 49] << ' ' << Suits[deck(i + 1) - 49] << ' ' << std::endl;
+				stream << i + 1 << ": " << CardDeck::Rangs[deck[i + 1] - 49] << ' ' << CardDeck::Suits[deck(i + 1) - 49] << ' ' << std::endl;
 			}
 		}
 		return stream;

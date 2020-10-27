@@ -11,10 +11,6 @@ const char* msgs[] = { "0. Выйти",
 
 const int NMsgs = sizeof(msgs) / sizeof(msgs[0]);
 
-
-const char* Rang[] = { "Двойка", "Тройка", "Четвёрка", "Пятёрка", "Шестёрка", "Семёрка", "Восьмёрка", "Девятка", "Десятка", "Валет", "Дама", "Король", "Туз" };
-const char* Suit[] = { "Бубе", "Червей", "Пики", "Крести" };
-
 namespace Lab2_A {
 
 
@@ -128,7 +124,7 @@ namespace Lab2_A {
 			CardDeckClass::input_Type(card);
 			int suit = deck(card);
 			int rang = deck[card];
-			std::cout << "Ваша карта: " << Rang[rang - 49] << ' ' << Suit[suit - 49] << std::endl;
+			std::cout << "Ваша карта: " << CardDeckClass::CardDeck::Rangs[rang - 49] << ' ' << CardDeckClass::CardDeck::Suits[suit - 49] << std::endl;
 		}
 		catch (const std::exception& ex) {
 			std::cout << ex.what() << std::endl;

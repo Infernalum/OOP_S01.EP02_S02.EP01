@@ -42,16 +42,19 @@ namespace CardDeckClass {
 	};
 
 	class CardDeck {
+	public:
+
+		// Массивы соответствия чаров для карты и ее ранга и масти 
+		static const char* Rangs[13];
+
+		static const char* Suits[4];
+
 	private:
 
 		// Размер квоты для выделения памяти
 		static const int QUOTA = 10;
 		int SZ;
 		Card* cards;
-
-		// Получение состояния карты без выбрасывания исключения для тестов
-		//int GetRang_Test(int i) const { return cards[i - 1].suit; };
-		//int GetSuit_Test(int i) const { return cards[i - 1].rang; };
 
 	public:
 		/* --------------------------------------------------------- */
@@ -72,7 +75,7 @@ namespace CardDeckClass {
 		// Создание экземпляра класса с его инициализацией другим экземпляром класса (Копирующий конструктор)
 		CardDeck(const CardDeck&);
 
-		// 
+		// Компораторы для qsort
 		static int CompareRang(const void* x1, const void* x2);
 
 		static int CompareSuit(const void* x1, const void* x2);
