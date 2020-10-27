@@ -1,5 +1,5 @@
-!/packages/**.*Debug/
-!/packages/**.*Release/
+!/packages/**Debug/
+!/packages/**Release/
 **/Debug/
 **/Release/
 **/ipch/
