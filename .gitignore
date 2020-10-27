@@ -1,4 +1,5 @@
 *.exe
 *.exe.recipe
 *.obj
-*/Debug/*.*
+**/Debug/
+**/Release/
