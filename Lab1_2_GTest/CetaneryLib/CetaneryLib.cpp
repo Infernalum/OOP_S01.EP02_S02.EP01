@@ -5,7 +5,7 @@
 
 #include<stdio.h>
 #include<exception>
-#include "Catenary.h"
+#include "CatenaryLib.h"
 
 
 namespace Class { /* Как изменить пространство имен? */
