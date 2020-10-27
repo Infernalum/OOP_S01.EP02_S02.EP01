@@ -1,2 +1,0 @@
-C:\Users\vladi\OneDrive\Рабочий стол\C++\Мои\Lab2\A\Debug\A.exe
-C:\Users\vladi\OneDrive\Рабочий стол\C++\Мои\Lab2\A\Debug\A.pdb

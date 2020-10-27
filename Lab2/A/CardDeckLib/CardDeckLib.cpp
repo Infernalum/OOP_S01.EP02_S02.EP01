@@ -1,7 +1,4 @@
 ﻿
-#include "pch.h"
-#include "framework.h"
-
 #include "CardDeckLib.h"
 #include <exception>
 #include <stdio.h>

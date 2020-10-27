@@ -1,2 +1,0 @@
-C:\Users\vladi\OneDrive\Рабочий стол\C++\Мои\Lab2\A\CardDeckLib\Debug\CardDeckLib.lib
-C:\Users\vladi\OneDrive\Рабочий стол\C++\Мои\Lab2\A\CardDeckLib\Debug\CardDeckLib.pdb
