@@ -1,2 +1,0 @@
-﻿CardDeckLib.lib(CardDeckLib.obj) : warning LNK4075: не учитывается "/EDITANDCONTINUE" из-за спецификации "/SAFESEH"
-  GTest(C).vcxproj -> C:\Users\vladi\OneDrive\Рабочий стол\C++\Мои\Lab2\GTest(C)\Debug\GTest(C).exe

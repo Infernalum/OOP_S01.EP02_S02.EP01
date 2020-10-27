@@ -1,4 +1,0 @@
-﻿  CardDeckLib.cpp
-C:\Users\vladi\OneDrive\Рабочий стол\C++\Мои\Lab2\GTest(C)\CardDeckLib\CardDeckLib.cpp(35,13): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
-C:\Users\vladi\OneDrive\Рабочий стол\C++\Мои\Lab2\GTest(C)\CardDeckLib\CardDeckLib.cpp(77,13): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
-  CardDeckLib.vcxproj -> C:\Users\vladi\OneDrive\Рабочий стол\C++\Мои\Lab2\GTest(C)\CardDeckLib\Debug\CardDeckLib.lib
