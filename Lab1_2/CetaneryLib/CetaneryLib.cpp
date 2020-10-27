@@ -1,8 +1,4 @@
 ﻿
-#include "pch.h"
-#include "framework.h"
-
-
 #include<stdio.h>
 #include<exception>
 #include "CatenaryLib.h"
