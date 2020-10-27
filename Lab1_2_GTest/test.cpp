@@ -1,6 +1,5 @@
 
 
-#include "pch.h"
 #include "gtest\gtest.h"
 #include "..\Lab1_2_GTest\CetaneryLib\CatenaryLib.h"
 
