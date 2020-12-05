@@ -24,7 +24,7 @@ namespace Battlefield {
 		/*					 Конструкторы						*/
 		/********************************************************/
 
-		Chryssalid(int d = 1) : Creature(5, 50, 8), damage(d) { set_accuracy(100); };
+//		Chryssalid(int d = 1) : Creature(5, 50, 8), damage(d) { set_accuracy(100); };
 
 
 		/********************************************************/
