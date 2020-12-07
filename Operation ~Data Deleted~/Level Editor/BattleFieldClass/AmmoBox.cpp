@@ -1,6 +1,6 @@
 #include "pch.h"
 
-namespace Battlefield {
+namespace XCom {
 
 	/********************************************************/
 	/*					 Конструкторы						*/
@@ -31,7 +31,7 @@ namespace Battlefield {
 	/*						Сеттеры							*/
 	/********************************************************/
 
-	// Пересчет веса для оруженого ящика
+	// Пересчет веса ящика с патронами
 	const AmmoBox& AmmoBox::set_weight() {
 		weight = weightOfOne * qty;
 		return *this;

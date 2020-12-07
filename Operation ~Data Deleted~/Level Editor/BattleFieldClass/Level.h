@@ -3,7 +3,7 @@
 
 
 // Класс Самой игрушки
-namespace Battlefield {
+namespace XCom {
 
 	// forward declaration
 	class Cell;

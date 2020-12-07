@@ -2,7 +2,7 @@
 
 #include "Chryssalid.h"
 
-namespace Battlefield {
+namespace XCom {
 
 	const char Chryssalid::marking = 'c';
 

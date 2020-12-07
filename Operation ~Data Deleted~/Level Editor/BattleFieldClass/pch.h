@@ -19,6 +19,8 @@
 
 
 #include "Creature.h"
+#include "Table.h"
+#include "ConstTableIt.h"
 #include "Chryssalid.h"
 #include "Item.h"
 #include "AmmoBox.h"

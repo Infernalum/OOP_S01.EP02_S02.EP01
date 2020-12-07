@@ -5,7 +5,7 @@
 
 
 
-namespace Battlefield {
+namespace XCom {
 
 
 

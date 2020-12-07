@@ -2,7 +2,7 @@
 #include "Creature.h"
 
 
-namespace Battlefield {
+namespace XCom {
 
 	/********************************************************/
 	/*					 Конструкторы						*/

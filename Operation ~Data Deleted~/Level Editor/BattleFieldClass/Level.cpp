@@ -4,7 +4,7 @@
 
 
 
-namespace Battlefield {
+namespace XCom {
 
 	const std::string Level::sprites = ".#-=&";
 

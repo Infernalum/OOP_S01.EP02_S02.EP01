@@ -2,7 +2,7 @@
 #define AMMO_BOX
 
 
-namespace Battlefield {
+namespace XCom {
 
 	class AmmoBox : public Item {
 	private:
@@ -32,14 +32,15 @@ namespace Battlefield {
 
 		int get_qty() { return qty; };
 		int get_max_qty() { return maxQty; };
+		double get_weight_of_one() { return weightOfOne; };
 
 
 		/********************************************************/
 		/*						Сеттеры							*/
 		/********************************************************/
 
-		// Пересчет веса для оруженого ящика
-		virtual const AmmoBox& set_weight();
+		// Пересчет веса ящика с патронами
+		virtual const AmmoBox& set_weight() override;
 
 		/********************************************************/
 		/*					Остальные методы					*/

@@ -3,7 +3,7 @@
 
 
 
-namespace Battlefield {
+namespace XCom {
 
 	// Класс "Дикое существо" (Пришелец)
 	/* У криссалида нет ни инвентаря, ни оружия (атакуют только в ближнем бою),
@@ -14,11 +14,11 @@ namespace Battlefield {
 		int damage;			// Урон в ближнем бою
 
 	protected:
-		virtual std::ostream& print(std::ostream&) const;
+		virtual std::ostream& print(std::ostream&) const override;
 
 	public:
 
-		virtual const char name() const { return marking; };
+		virtual const char name() const override  { return marking; };
 
 		/********************************************************/
 		/*					 Конструкторы						*/
@@ -38,10 +38,10 @@ namespace Battlefield {
 		/*						Сеттеры							*/
 		/********************************************************/
 
-		virtual Chryssalid& set_damage(int);
+		virtual Chryssalid& set_damage(int) override;
 
 
-		virtual Chryssalid* clone() const { return new Chryssalid(*this); };
+		virtual Chryssalid* clone() const override { return new Chryssalid(*this); };
 
 		/********************************************************/
 		/*					Остальные методы					*/
