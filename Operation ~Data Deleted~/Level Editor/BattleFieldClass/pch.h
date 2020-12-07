@@ -16,13 +16,14 @@
 #include <vector>
 #include <list>
 #include <locale>
+#include <map>
 
 
 #include "Creature.h"
-#include "Table.h"
-#include "ConstTableIt.h"
 #include "Chryssalid.h"
 #include "Item.h"
+#include "Table.h"
+#include "ConstTableIt.h"
 #include "AmmoBox.h"
 #include "Cell.h"
 #include "Level.h"
