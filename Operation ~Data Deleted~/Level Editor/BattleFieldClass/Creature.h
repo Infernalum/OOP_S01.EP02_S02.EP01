@@ -12,7 +12,7 @@ namespace XCom {
 
 	private:
 		//static const std::string fraction;	// "Тип" существа (к какой стороне пренадлежит - "Alien" или "Operative")"
-		int x, y;								// Координаты клетки, на которой стоит существо
+		std::pair<int, int> coords;				// Координаты клетки, на которой стоит существо
 		int HP, maxHP;							// Текущее \ максимальное кол-во очков здоровья
 		int evasion;							// Параметр уклонения существа: снижает шанс попадания (варьируется от 0 - нет бонуса, до 100% - уменьшает шанс в 2 раза)
 		int accuracy;							// Параметр точности существа: показывает, каков шанс нанести урон от стандартного шанса оружием. 0 - шансов нет (ослеплен), 100 - обычная точность
@@ -55,7 +55,7 @@ namespace XCom {
 		// Конструктор существа по умолчанию; менять максимальные хар-ки будем через сеттеры
 		// Существо с текущим кол-вом здоровья 0 существовать НЕ МОЖЕТ
 		Creature(int s = 1, int mh = 1, int mtp = 1, int mw = 1)
-			: x(-1), y(-1), sight(s), evasion(0), accuracy(100), HP(mh), maxHP(mh), TP(mtp), maxTP(mtp) {};
+			: coords{ -1,-1 }, sight(s), evasion(0), accuracy(100), HP(mh), maxHP(mh), TP(mtp), maxTP(mtp) {};
 
 
 
@@ -65,8 +65,8 @@ namespace XCom {
 		/********************************************************/
 
 		// Получение базовых характеристик абстрактного класса
-		int get_x() const { return x; };
-		int get_y() const { return y; };
+		int get_x() const { return coords.first; };
+		int get_y() const { return coords.second; };
 		int get_HP() const { return HP; };
 		int get_TP() const { return TP; };
 		int get_maxTP() const { return maxTP; };

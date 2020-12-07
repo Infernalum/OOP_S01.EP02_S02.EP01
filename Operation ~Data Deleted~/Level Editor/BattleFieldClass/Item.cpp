@@ -27,5 +27,10 @@ namespace XCom {
 		return *this;
 	}
 
+	std::ostream& Item::print(std::ostream& os) const {
+		os << "очки времени на использование: " << usedPoint;
+		return os;
+	}
+
 
 }

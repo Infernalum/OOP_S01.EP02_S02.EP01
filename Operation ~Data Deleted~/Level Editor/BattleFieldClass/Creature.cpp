@@ -24,7 +24,7 @@ namespace XCom {
 	Creature& Creature::set_x(int x0) {
 		if (x0 < 0)
 			throw std::invalid_argument("Коородината x не может быть отрицательной. Попробуйте еще раз.");
-		x = x0;
+		coords.first = x0;
 		return *this;
 	}
 
@@ -32,7 +32,7 @@ namespace XCom {
 	Creature& Creature::set_y(int y0) {
 		if (y0 < 0)
 			throw std::invalid_argument("Коородината y не может быть отрицательной. Попробуйте еще раз.");
-		y = y0;
+		coords.second = y0;
 		return *this;
 	}
 
@@ -55,7 +55,7 @@ namespace XCom {
 
 	Creature& Creature::set_HP(int hp) {
 		if (hp < 1)
-			throw std::invalid_argument("Текущее здоровье существа должно быть положительным. Попробуйте еще раз.");
+			throw std::invalid_argument("Текущее здоровье существа не может быть отрицательным. Попробуйте еще раз.");
 		if (hp > maxHP)
 			HP = maxHP;
 		else
@@ -66,15 +66,17 @@ namespace XCom {
 
 	Creature& Creature::set_maxHP(int mh) {
 		if (mh < 1)
-			throw std::invalid_argument("Максимальное здоровье существа должно быть положительным. Попробуйте еще раз.");
+			throw std::invalid_argument("Максимальное здоровье существа не может быть отрицательным. Попробуйте еще раз.");
 		maxHP = mh;
+		if (HP > maxHP)
+			HP = maxHP;
 		return *this;
 	}
 
 
 	Creature& Creature::set_TP(int tp) {
-		if (tp < 1)
-			throw std::invalid_argument("Текущее кол-во очков времени должно быть положительным. Попробуйте еще раз.");
+		if (tp < 0)
+			throw std::invalid_argument("Текущее кол-во очков времени не может быть отрицательным. Попробуйте еще раз.");
 		if (tp > maxTP)
 			TP = maxTP;
 		else
@@ -84,16 +86,18 @@ namespace XCom {
 
 
 	Creature& Creature::set_maxTP(int mtp) {
-		if (mtp < 1)
-			throw std::invalid_argument("Максимальное значение очков времени существа должно быть положительным. Попробуйте еще раз.");
+		if (mtp < 0)
+			throw std::invalid_argument("Максимальное значение очков времени существа не может быть отрицательным. Попробуйте еще раз.");
 		maxTP = mtp;
+		if (TP > maxTP)
+			TP = maxTP;
 		return *this;
 	}
 
 
 	Creature& Creature::set_sight(int s) {
-		if (s < 1)
-			throw std::invalid_argument("Радиус обзора существа должен быть положительным. Попробуйте еще раз.");
+		if (s < 0)
+			throw std::invalid_argument("Радиус обзора существа не может быть отрицательным. Попробуйте еще раз.");
 		sight = s;
 		return *this;
 	}
@@ -105,11 +109,11 @@ namespace XCom {
 
 	std::ostream& Creature::print(std::ostream& os) const {
 		os << "Координаты: ";
-		if (x < 0 || y < 0)
+		if (coords.first < 0 || coords.second < 0)
 			os << "undefined";
 		else
-			os << x << '\\' << y;
-		return os << "; радиус обзора: " << sight << "; HP: " << HP << '\\' << maxHP << "; Очки времени: " << TP << '\\' << maxTP << ";";
+			os << coords.first << '\\' << coords.second;
+		return os << "; Радиус обзора: " << sight << "; HP: " << HP << '\\' << maxHP << "; Очки времени: " << TP << '\\' << maxTP << ";";
 	}
 
 

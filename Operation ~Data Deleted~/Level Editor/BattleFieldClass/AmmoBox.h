@@ -11,9 +11,9 @@ namespace XCom {
 		int maxQty;				// Общее кол-во патронов в ящике;
 		double weightOfOne;		// Вес одного патрона
 
-
 	protected:
 
+		virtual std::ostream& print(std::ostream&) const override;
 
 	public:
 
@@ -34,10 +34,17 @@ namespace XCom {
 		int get_max_qty() { return maxQty; };
 		double get_weight_of_one() { return weightOfOne; };
 
+		// Проверка ящика на пустоту
+		bool empty();
 
 		/********************************************************/
 		/*						Сеттеры							*/
 		/********************************************************/
+
+		AmmoBox& set_qty(int);
+		AmmoBox& set_max_qty(int);
+		AmmoBox& set_weight_of_one(double);
+
 
 		// Пересчет веса ящика с патронами
 		virtual const AmmoBox& set_weight() override;
@@ -46,6 +53,9 @@ namespace XCom {
 		/*					Остальные методы					*/
 		/********************************************************/
 
+		virtual int using_item(int) override;
+
+		friend std::ostream& operator << (std::ostream& os, const AmmoBox& c) { return c.print(os); };
 
 	};
 

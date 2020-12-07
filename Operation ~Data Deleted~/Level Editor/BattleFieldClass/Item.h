@@ -12,6 +12,8 @@ namespace XCom {
 
 	protected:
 
+		virtual std::ostream& print(std::ostream&) const;
+
 		// Помещаем конструкторы в protected область, чтобы невозможно было даже
 		// пытаться создать объекты абстрактного класса, но доступ к ним имели дочерние классы
 
@@ -36,7 +38,7 @@ namespace XCom {
 		/*						Геттеры							*/
 		/********************************************************/
 
-		int get_weight() { return weight; };
+		double get_weight() { return weight; };
 		int get_uP() { return usedPoint; };
 
 
@@ -54,7 +56,7 @@ namespace XCom {
 		Для аптечки: использовать аптечку (после использования аптечка удаляется)
 		Для оружия: выстрелить 1-им патроном. Вычисляется шанс попадания для расстояния в n клеток
 		*/
-		virtual int using_item() = 0;
+		virtual int using_item(int) = 0;
 
 		Item& set_usedPoint(int);
 
@@ -62,12 +64,11 @@ namespace XCom {
 		/*					Остальные методы					*/
 		/********************************************************/
 
-		// Использовать предмет (выстрелить, захиллиться, перезарядиться)
-		virtual int using_item(Creature&) = 0;
-
 
 		// Создание копии предмета
 		Item* clone() { return this; };
+
+		friend std::ostream& operator << (std::ostream& os, const Item& c) { return c.print(os); };
 
 	};
 
