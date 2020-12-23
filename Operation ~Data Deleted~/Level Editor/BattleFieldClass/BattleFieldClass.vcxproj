@@ -153,29 +153,32 @@
   <ItemGroup>
     <ClInclude Include="AmmoBox.h" />
     <ClInclude Include="Chryssalid.h" />
-    <ClInclude Include="ConstTableIt.h" />
+    <ClInclude Include="FirstAidKit.h" />
     <ClInclude Include="Level.h" />
     <ClInclude Include="Cell.h" />
     <ClInclude Include="Creature.h" />
     <ClInclude Include="Item.h" />
-    <ClInclude Include="Table.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="Porter.h" />
+    <ClInclude Include="Table.h" />
+    <ClInclude Include="Weapon.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AmmoBox.cpp" />
     <ClCompile Include="Chryssalid.cpp" />
-    <ClCompile Include="ConstTableIt.cpp" />
+    <ClCompile Include="FirstAidKit.cpp" />
     <ClCompile Include="Level.cpp" />
     <ClCompile Include="Cell.cpp" />
     <ClCompile Include="Creature.cpp" />
     <ClCompile Include="Item.cpp" />
-    <ClCompile Include="Table.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="Porter.cpp" />
+    <ClCompile Include="Weapon.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />

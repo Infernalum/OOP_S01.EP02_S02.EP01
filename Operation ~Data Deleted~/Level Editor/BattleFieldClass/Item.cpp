@@ -1,36 +1,83 @@
-#include "pch.h"
+п»ї#include "pch.h"
 
 namespace XCom {
 
 	/********************************************************/
-	/*					 Конструкторы						*/
+	/*					 РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂС‹						*/
 	/********************************************************/
 
 
-	// Единственный конструктор
+	// Р•РґРёРЅСЃС‚РІРµРЅРЅС‹Р№ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
 	Item::Item(int uP) : weight(0) {
 		if (uP < 1)
-			throw std::invalid_argument("Количество затрачиваемых TP должно быть положительным. Попробуйте еще раз.");
+			throw std::invalid_argument("РљРѕР»РёС‡РµСЃС‚РІРѕ Р·Р°С‚СЂР°С‡РёРІР°РµРјС‹С… TP РґРѕР»Р¶РЅРѕ Р±С‹С‚СЊ РїРѕР»РѕР¶РёС‚РµР»СЊРЅС‹Рј. РџРѕРїСЂРѕР±СѓР№С‚Рµ РµС‰Рµ СЂР°Р·.");
 		usedPoint = uP;
 	}
 
 
 
 	/********************************************************/
-	/*						Сеттеры							*/
+	/*						РЎРµС‚С‚РµСЂС‹							*/
 	/********************************************************/
 
-	Item& Item::set_usedPoint(int uP) {
+	void Item::set_weight(double val) {
+		if (val < 0)
+			throw std::invalid_argument("Р’РµСЃ РїСЂРµРґРјРµС‚Р° РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ РѕС‚СЂРёС†Р°С‚РµР»СЊРЅС‹Рј. РџРѕРїСЂРѕР±СѓР№С‚Рµ РµС‰Рµ СЂР°Р·.");
+		weight = val;
+	}
+
+	void Item::set_usedPoint(int uP) {
 		if (uP < 1)
-			throw std::invalid_argument("Кол-во расходных очков времени должно быть положительным. Попробуйте еще раз.");
+			throw std::invalid_argument("РљРѕР»-РІРѕ СЂР°СЃС…РѕРґРЅС‹С… РѕС‡РєРѕРІ РІСЂРµРјРµРЅРё РґРѕР»Р¶РЅРѕ Р±С‹С‚СЊ РїРѕР»РѕР¶РёС‚РµР»СЊРЅС‹Рј. РџРѕРїСЂРѕР±СѓР№С‚Рµ РµС‰Рµ СЂР°Р·.");
 		usedPoint = uP;
-		return *this;
 	}
 
-	std::ostream& Item::print(std::ostream& os) const {
-		os << "очки времени на использование: " << usedPoint;
+	std::ostream& Item::print(std::ostream& os) const noexcept {
+		os << "РІРµСЃ: " << weight << "; РѕС‡РєРё РІСЂРµРјРµРЅРё РЅР° РёСЃРїРѕР»СЊР·РѕРІР°РЅРёРµ: " << usedPoint << "; ";
 		return os;
 	}
 
+	const std::pair<std::string, double> Ammo::_default = { "5,45*39 РјРј", 0.01 };
+
+	Ammo::Ammo(const std::pair<std::string, double>& pair) {
+		type.first = pair.first;
+		type.second = pair.second;
+	}
+
+	Ammo::Ammo(const std::string& name, double weight) {
+		if (weight <= 0)
+			throw std::invalid_argument("Р’РµСЃ РїР°С‚СЂРѕРЅР° РґРѕР»Р¶РµРЅ Р±С‹С‚СЊ РїРѕР»РѕР¶РёС‚РµР»СЊРЅС‹Рј. РџРѕРїСЂРѕР±СѓР№С‚Рµ РµС‰Рµ СЂР°Р·.");
+		type.first = name;
+		type.second = weight;
+	}
+
+
+	Ammo& Ammo::set_weigth(double weight) {
+		if (weight <= 0)
+			throw std::invalid_argument("Р’РµСЃ РїР°С‚СЂРѕРЅР° РґРѕР»Р¶РµРЅ Р±С‹С‚СЊ РїРѕР»РѕР¶РёС‚РµР»СЊРЅС‹Рј. РџРѕРїСЂРѕР±СѓР№С‚Рµ РµС‰Рµ СЂР°Р·.");
+		type.second = weight;
+		return *this;
+	}
+
+	std::ostream& Ammo::save(std::ostream& os) const noexcept{
+		os << type.second << ' ' << type.first << '\n';
+		return os;
+	}
+
+	std::ostream& operator <<(std::ostream& os, const Ammo& ammo) noexcept {
+		os << "РўРёРї РїР°С‚СЂРѕРЅР°: " << ammo.type.first << "; РІРµСЃ: " << ammo.type.second << ";";
+		return os;
+	}
+
+	std::istream& Ammo::load(std::istream& is) noexcept {
+		double weight;
+		std::string name;
+		is >> weight;
+		set_weigth(weight);
+		is.ignore();
+		std::getline(is, name);
+		set_type(name);
+		return is;
+	}
 
 }

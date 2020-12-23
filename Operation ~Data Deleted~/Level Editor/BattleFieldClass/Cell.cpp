@@ -1,5 +1,5 @@
 #include "pch.h"
-#include "Cell.h"
+
 
 
 
@@ -28,17 +28,17 @@ namespace XCom {
 	*/
 
 
-
 	// Конструктор по умолчанию: создает клетку символа "пол", который задан в спрайтах карты как первый символ
 	Cell::Cell() noexcept :
 		species(Level::get_sprites()[0]),
 		itemList(),
-		creature() {};
-
+		creature(),
+		fog(false),
+		visible(false) {};
 
 	// Конструктор, задающий тип спрайта (Задавать указатель на существо во время инициализации поля НЕЛЬЗЯ априори; поэтому он всегда nullptr. Кроме того, индекс спрайта должен существовать)
-	Cell::Cell(int iSprites) {
-		if (iSprites < 0 || iSprites >= Level::get_sprites().size())
+	Cell::Cell(int iSprites) : fog(false), visible(false) {
+		if (iSprites < 0 || iSprites >= (int)Level::get_sprites().size())
 			throw std::out_of_range("Клетки такого типа не существует. Попробуйте еще раз.");
 		species = Level::get_sprites()[iSprites];
 		creature = nullptr;
@@ -46,6 +46,8 @@ namespace XCom {
 
 	// Копирующий конструктор (В соответсвиями с описанием выше)
 	Cell::Cell(const Cell& copy) noexcept :
+		fog(copy.fog),
+		visible(copy.visible),
 		species(copy.species),
 		creature(copy.creature),
 		itemList() {
@@ -88,14 +90,14 @@ namespace XCom {
 		Creature* tmpCreature = move.creature;
 		move.creature = creature;
 		creature = tmpCreature;
-		std::list<Item*> tmpList = move.itemList;
+		mystd::Table<Item*> tmpList = move.itemList;
 		move.itemList = itemList;
 		itemList = tmpList;
 		return *this;
 	}
 
 
-	// Дестуктор (Подразумевается, что при удалении привязанное существо остается на поле, а вот дропнутые предметы так как не имеют больше связи ни с чем, удаляются вместе с клеткой)
+	// Дестуктор (Подразумевается, что при удалении привязанное существо остается в памяти, а вот дропнутые предметы так как не имеют больше связи ни с чем, удаляются вместе с клеткой)
 	Cell::~Cell() {
 		if (!itemList.empty())
 			for (auto iter = itemList.begin(); iter != itemList.end(); ++iter)
@@ -107,7 +109,6 @@ namespace XCom {
 	/********************************************************/
 	/*						Геттеры							*/
 	/********************************************************/
-
 
 
 	/********************************************************/
@@ -135,6 +136,31 @@ namespace XCom {
 	}
 
 
+	// Получить указатель на конкретный предмет из списка вещей (передается НОМЕР предмета)
+	Item* Cell::get_item(int pos) const {
+		if (!itemList.size())
+			throw std::out_of_range("Здесь нет никаких предметов. Попробуйте еще раз.");
+		if (pos < 1)
+			throw std::out_of_range("Предмета с таким номером быть не может. Попробуйте еще раз");
+		if (pos > itemList.size())
+			throw std::out_of_range("Предмета с таким номером на клетке нет. Попробуйте еще раз.");
+		auto item = itemList.begin();
+		for (int i = 1; i < pos; ++i)
+			++item;
+		return *item;
+	}
+
+	// Вывести список предметов на клетке
+	std::ostream& Cell::show_list(std::ostream& os) const noexcept {
+		if (!itemList.size())
+			os << "вещей нет." << '\n';
+		int i = 1;
+		for (auto iter = itemList.begin(); iter != itemList.end(); ++iter)
+			os << "№" << i++ << ": " << *iter << '\n';
+		return os;
+	}
+
+
 	/********************************************************/
 	/*					Остальные методы					*/
 	/********************************************************/
@@ -151,10 +177,10 @@ namespace XCom {
 	// Удалить какой-то предмет из списка вещей (задается номером вещи в списке, т.к. игроку будет выводиться игроку); вызывается exception, если предмет с таким номером не существует или список пуст 
 	Item* Cell::erase_item(int n) {
 		if (n < 1)
-			throw std::exception("Предмета с таким номером тут быть не может.");
+			throw std::exception("Предмета с таким номером быть не может. Попробуйте еще раз.");
 		int size = itemList.size();
 		if (!size)
-			throw std::exception("Здесь нет никаких предметов.");
+			throw std::exception("Здесь нет никаких предметов. Попробуйте еще раз.");
 		if (n > size)
 			throw std::exception("Предмета с таким номером здесь нет. Попробуйте еще раз.");
 		int i = 1;
@@ -170,20 +196,23 @@ namespace XCom {
 	}
 
 
-	/*
-			int size = cell.itemList.size();
-		if (!size)
-			os << "Здесь нет вещей.";
-		else
-			for (auto iter = cell.itemList.begin(); iter != cell.itemList.end(); ++iter)
-				os << "Предмет #" << size++ << ": " << (*iter) << ";\n";
-		return os;
-	*/
-
-
 	// Вывод клетки
 	std::ostream& operator << (std::ostream& os, const Cell& cell) {
-		os << cell.get_species();
+		// Если она невидима глобально (fog true), то знак '?' (невидимость)
+		if (cell.fog)
+			os << '?';
+		// Если она была засвечена, но в данный момент невидима(visible false), то отображается тип клетки;
+		else if (!cell.visible)
+			os << cell.get_species();
+		// Если она была засвечена, и засвечена до сих пор (visible true), то отображается либо враг, стоящий на ней, либо предметы, если врага нет, либо тип клетки, если ни того, ни другого нет
+		else {
+			if (cell.creature)
+				os << cell.creature->name();
+			else if (!cell.empty())
+				os << Level::get_sprites()[5];
+			else
+				os << cell.get_species();
+		}
 		return os;
 	}
 

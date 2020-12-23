@@ -3,7 +3,7 @@
 
 #include "BattleFieldClass/pch.h"
 
-using namespace Battlefield;
+using namespace XCom;
 
 
 const std::string Cr[] = { "1. Криссалид", "0. Вернуться в меню" };
@@ -19,6 +19,8 @@ namespace Editor {
 
 	// Выбор существа
 	Creature* answer_1(const std::string msgs[], int, Creature*);
+
+	//Creature* answer_1(const std::string msgs[], int, Creature*, Level&);
 
 	// Изменение базовых характеристик существа (1 - идем дальше, 0 - удалили существо)
 	int answer_2(Creature&, Level&);

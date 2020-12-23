@@ -5,7 +5,7 @@ extern const int numCr, numMenu;
 namespace Editor {
 
 	// Первая инициализация (задание размера карты и изменение типа клеток)
-	Battlefield::Level Initialization() {
+	XCom::Level Initialization() {
 		Level lvl;
 		short n, m;
 		while (true) {
@@ -89,6 +89,7 @@ namespace Editor {
 					std::cout << "Выберите тип клетки: \n 1: Пол;\n 2: Стена;\n 3: Стекло;\n 4: Перегородка;\n 5: Складская точка;\n --> ";
 					inputType(type, std::cin, std::cout);
 					lvl.set_cell(x, y, type);
+					getState(lvl);
 					std::cout << lvl;
 				}
 				catch (const std::exception& ex) {
@@ -105,11 +106,11 @@ namespace Editor {
 	// Создание нового существа и привязка его к полю
 	void createCreature(Level& lvl) {
 		Creature* ptr = nullptr;
-		ptr = answer_1(Cr, numCr, ptr);
+		//ptr = answer_1(Cr, numCr, ptr);
 		if (!ptr)
 			return;
-		int ans_2 = answer_2(ptr, lvl);
-		while (ans_3 != 3) {
+		//int ans_2 = answer_2(ptr, lvl);
+		/*while (ans_3 != 3) {
 			std::cout << "Теперь измените характеристики, присущие данному типу существа:\n";
 			switch (ans) {
 			case 1:
@@ -133,14 +134,13 @@ namespace Editor {
 				case 2:
 
 
-				}
-			}
-		}
+				}*/
+				//}
 	}
 
 
 	// Выбор существа
-	Creature* answer_1(const std::string msgs[], int N, Creature* ptr, Level& lvl) {
+	/*Creature* answer_1(const std::string msgs[], int N, Creature* ptr, Level& lvl) {
 		getState(lvl);
 		std::cout << "Пожалуйста, выберите тип существа:\n";
 		for (int i = 0; i < N; ++i)
@@ -160,7 +160,7 @@ namespace Editor {
 
 		}
 		return ptr;
-	}
+	}*/
 
 	// Изменение базовых характеристик существа (1 - идем дальше; 0 - удалили существо)
 	int answer_2(Creature* ptr, Level& lvl) {
@@ -171,7 +171,7 @@ namespace Editor {
 		if (!ans) {
 			delete ptr;
 			system("cls");
-			return;
+			return ans;
 		}
 		if (ans == 4)
 			return 1;
@@ -213,6 +213,7 @@ namespace Editor {
 			}
 			break;
 		}
+		return ans;
 	}
 
 

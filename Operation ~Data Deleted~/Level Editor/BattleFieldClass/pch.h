@@ -9,7 +9,9 @@
 
 // Добавьте сюда заголовочные файлы для предварительной компиляции
 #include <cstdio>
+#include <cstdlib>
 #include <iostream>
+#include <fstream>
 #include <exception>
 #include <string>
 #include <limits>
@@ -17,15 +19,19 @@
 #include <list>
 #include <locale>
 #include <map>
+#include <initializer_list>
 
 
+#include "Table.h"
+#include "Item.h"
+#include "AmmoBox.h"
+#include "FirstAidKit.h"
+#include "Weapon.h"
 #include "Creature.h"
 #include "Chryssalid.h"
-#include "Item.h"
-#include "Table.h"
-#include "ConstTableIt.h"
-#include "AmmoBox.h"
+#include "Porter.h"
 #include "Cell.h"
 #include "Level.h"
+
 
 #endif //PCH_H

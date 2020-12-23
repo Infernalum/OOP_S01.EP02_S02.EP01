@@ -6,7 +6,7 @@
 
 namespace XCom {
 
-	const std::string Level::sprites = ".#-=&";
+	const std::string Level::sprites = ".#-=&!";
 
 	/********************************************************/
 	/*					Конструкторы						*/
@@ -18,16 +18,16 @@ namespace XCom {
 		Мы копируем поле (юзая копирующий конструтор для клеток), создаем копии существ из списков тим и перепривязываем всех существ к их клеткам.
 		Таким образом, старые указатели на существ из копирующего поля поменяются на указатели на копии существ
 	*/
-	Level::Level(const Level& copy) noexcept : field(copy.field) {
-		for (auto iter = copy.SquadAliens.begin(); iter != copy.SquadAliens.end(); ++iter) {
+	Level::Level(const Level& copy) noexcept : field(copy.field), ammo(copy.ammo) {
+		for (auto iter = copy.squadAliens.begin(); iter != copy.squadAliens.end(); ++iter) {
 			Creature* tmp = (*iter)->clone();
-			SquadAliens.push_back(tmp);
-			field[tmp->y][tmp->x].set_creature(tmp);
+			squadAliens.push_back(tmp);
+			field[tmp->change_coords().second][tmp->change_coords().first].set_creature(tmp);
 		}
-		for (auto iter = copy.SquadOperative.begin(); iter != copy.SquadOperative.end(); ++iter) {
+		for (auto iter = copy.squadOperative.begin(); iter != copy.squadOperative.end(); ++iter) {
 			Creature* tmp = (*iter)->clone();
-			SquadAliens.push_back(tmp);
-			field[tmp->y][tmp->x].set_creature(tmp);
+			squadAliens.push_back(tmp);
+			field[tmp->change_coords().second][tmp->change_coords().first].set_creature(tmp);
 		}
 	}
 
@@ -36,15 +36,16 @@ namespace XCom {
 	Level& Level::operator =(const Level& copy) noexcept {
 		if (this != &copy) {
 			field = copy.field;
-			for (auto iter = copy.SquadAliens.begin(); iter != copy.SquadAliens.end(); ++iter) {
+			ammo = copy.ammo;
+			for (auto iter = copy.squadAliens.begin(); iter != copy.squadAliens.end(); ++iter) {
 				Creature* tmp = (*iter)->clone();
-				SquadAliens.push_back(tmp);
-				field[tmp->y][tmp->x].set_creature(tmp);
+				squadAliens.push_back(tmp);
+				field[tmp->change_coords().second][tmp->change_coords().first].set_creature(tmp);
 			}
-			for (auto iter = copy.SquadOperative.begin(); iter != copy.SquadOperative.end(); ++iter) {
+			for (auto iter = copy.squadOperative.begin(); iter != copy.squadOperative.end(); ++iter) {
 				Creature* tmp = (*iter)->clone();
-				SquadAliens.push_back(tmp);
-				field[tmp->y][tmp->x].set_creature(tmp);
+				squadAliens.push_back(tmp);
+				field[tmp->change_coords().second][tmp->change_coords().first].set_creature(tmp);
 			}
 		}
 		return *this;
@@ -53,16 +54,9 @@ namespace XCom {
 
 	// Перемещающий оператор присваивания
 	Level& Level::operator =(Level&& move) noexcept {
-		// ??? Можно ли избежать лишней работы копирующего конструтора?
-		std::vector<std::vector<Cell>> tmpField = move.field;
-		move.field = field;
-		field = tmpField;
-		std::list<Creature*> tmpList = move.SquadAliens;
-		move.SquadAliens = SquadAliens;
-		SquadAliens = tmpList;
-		tmpList = move.SquadOperative;
-		move.SquadOperative = SquadOperative;
-		SquadOperative = tmpList;
+		field.swap(move.field);
+		squadAliens.swap(move.squadAliens);
+		squadOperative.swap(move.squadOperative);
 		return *this;
 	}
 
@@ -73,9 +67,9 @@ namespace XCom {
 		Для существ,имеющих инвентарь: удаляется инвентарь (НЕ ПУТАТЬ С УНИЧТОЖЕНИЕМ СУЩЕСТВА! В ЭТОМ СЛУЧАЕ ВЕЩИ ИЗ СУЩЕСТВА ВЫПАДАЮТ НА КЛЕТКУ)
 	*/
 	Level::~Level() {
-		for (auto iter = SquadAliens.begin(); iter != SquadAliens.end(); ++iter)
+		for (auto iter = squadAliens.begin(); iter != squadAliens.end(); ++iter)
 			delete (*iter);
-		for (auto iter = SquadOperative.begin(); iter != SquadOperative.end(); ++iter)
+		for (auto iter = squadOperative.begin(); iter != squadOperative.end(); ++iter)
 			delete (*iter);
 		field.clear();
 	}
@@ -103,12 +97,12 @@ namespace XCom {
 		// n - ШИРИНА, m - ДЛИНА (в силу специфики создания двумерного вектора)
 		if (n < 1 || m < 1)
 			throw std::exception("Поле с заданными пропорциями существовать не может. Попробуйте еще раз.");
-		for (auto iter = SquadAliens.begin(); iter != SquadAliens.end(); ++iter)
+		for (auto iter = squadAliens.begin(); iter != squadAliens.end(); ++iter)
 			delete (*iter);
-		for (auto iter = SquadOperative.begin(); iter != SquadOperative.end(); ++iter)
+		for (auto iter = squadOperative.begin(); iter != squadOperative.end(); ++iter)
 			delete (*iter);
-		SquadAliens.clear();
-		SquadOperative.clear();
+		squadAliens.clear();
+		squadOperative.clear();
 		field.clear();
 		field.resize(m);
 		for (int i = 0; i < m; ++i)
@@ -134,12 +128,12 @@ namespace XCom {
 			throw std::exception("Координаты клетки введены неверно. Выберите другую клетку.");
 		// Исключения, что на данной клетке уже есть существо или тип клетки не позволяет размещать его, выбрасываются в set_creature()
 		field[y][x].set_creature(cr);
-		if (cr->marking == 'A')
-			SquadOperative.push_back(cr);
+		if (cr->name() == 'A')
+			squadOperative.push_back(cr);
 		else
-			SquadAliens.push_back(cr);
-		cr->x = x;
-		cr->y = y;
+			squadAliens.push_back(cr);
+		cr->change_coords().first = x;
+		cr->change_coords().second = y;
 		return *this;
 	}
 
