@@ -5,10 +5,14 @@ namespace XCom {
 
 	class FirstAidKit : public Item {
 		
-		int qty;				// Оставшееся кол-во использований
-		int maxQty;				// Кол-во использований
-		int rec;				// Кол-во восстанавливающего здоровья
-		double weightOfOne;		// Вес одного "заряда" аптечки
+		// Оставшееся кол-во использований
+		int qty;				
+		// Кол-во использований
+		int maxQty;				
+		// Кол-во восстанавливающего здоровья
+		int rec;				
+		// Вес одного "заряда" аптечки
+		double weightOfOne;		
 
 	protected:
 
@@ -25,7 +29,7 @@ namespace XCom {
 
 		// copy- move- конструкторы по умолчанию
 
-		// Виртуальный деструктор
+		// Виртуальный деструктор класса "Аптечка"
 		virtual ~FirstAidKit() override {};
 
 		/********************************************************/
@@ -46,9 +50,9 @@ namespace XCom {
 		/********************************************************/
 
 		FirstAidKit& set_qty(int);
-		FirstAidKit& set_max_qty(int);
+		FirstAidKit& set_maxQty(int);
 		FirstAidKit& set_rec(int);
-		FirstAidKit& set_weight_of_one(double);
+		FirstAidKit& set_weightOfOne(double);
 		
 		// Пересчет веса аптечки
 		virtual void set_weight(double) override { Item::set_weight(weightOfOne * qty); };
@@ -76,7 +80,7 @@ namespace XCom {
 
 		// Вывод информации об аптечке в выходной поток
 		friend std::ostream& operator << (std::ostream& os, const FirstAidKit& c) noexcept { return c.print(os); };
-		// Загрузка информации об аптечке из входного/файлового
+		// Загрузка информации об аптечке из входного/файлового потока
 		friend std::istream& operator >>(std::istream& is, FirstAidKit& fak) noexcept { return fak.load(is); };
 	};
 

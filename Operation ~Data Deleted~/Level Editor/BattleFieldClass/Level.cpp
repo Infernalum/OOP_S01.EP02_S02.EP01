@@ -8,6 +8,8 @@ namespace XCom {
 
 	const std::string Level::sprites = ".#-=&!";
 
+	const std::string Level::markingAliens = "pcm";
+
 	/********************************************************/
 	/*					Конструкторы						*/
 	/********************************************************/
@@ -22,12 +24,12 @@ namespace XCom {
 		for (auto iter = copy.squadAliens.begin(); iter != copy.squadAliens.end(); ++iter) {
 			Creature* tmp = (*iter)->clone();
 			squadAliens.push_back(tmp);
-			field[tmp->change_coords().second][tmp->change_coords().first].set_creature(tmp);
+			field[tmp->get_y()][tmp->get_x()].set_creature(tmp);
 		}
 		for (auto iter = copy.squadOperative.begin(); iter != copy.squadOperative.end(); ++iter) {
 			Creature* tmp = (*iter)->clone();
 			squadAliens.push_back(tmp);
-			field[tmp->change_coords().second][tmp->change_coords().first].set_creature(tmp);
+			field[tmp->get_y()][tmp->get_x()].set_creature(tmp);
 		}
 	}
 
@@ -40,12 +42,12 @@ namespace XCom {
 			for (auto iter = copy.squadAliens.begin(); iter != copy.squadAliens.end(); ++iter) {
 				Creature* tmp = (*iter)->clone();
 				squadAliens.push_back(tmp);
-				field[tmp->change_coords().second][tmp->change_coords().first].set_creature(tmp);
+				field[tmp->get_y()][tmp->get_x()].set_creature(tmp);
 			}
 			for (auto iter = copy.squadOperative.begin(); iter != copy.squadOperative.end(); ++iter) {
 				Creature* tmp = (*iter)->clone();
 				squadAliens.push_back(tmp);
-				field[tmp->change_coords().second][tmp->change_coords().first].set_creature(tmp);
+				field[tmp->get_y()][tmp->get_x()].set_creature(tmp);
 			}
 		}
 		return *this;
@@ -128,12 +130,12 @@ namespace XCom {
 			throw std::exception("Координаты клетки введены неверно. Выберите другую клетку.");
 		// Исключения, что на данной клетке уже есть существо или тип клетки не позволяет размещать его, выбрасываются в set_creature()
 		field[y][x].set_creature(cr);
-		if (cr->name() == 'A')
+		if (cr->get_ID() == CREATUREID_OPERATIVE)
 			squadOperative.push_back(cr);
 		else
 			squadAliens.push_back(cr);
-		cr->change_coords().first = x;
-		cr->change_coords().second = y;
+		cr->set_x(x);
+		cr->set_y(y);
 		return *this;
 	}
 
@@ -150,6 +152,18 @@ namespace XCom {
 	/********************************************************/
 	/*					Другие методы						*/
 	/********************************************************/
+
+
+	/*
+		Процесс уничтожения (смерти) существа: для каждого класса существа свой процесс стирания его с поля.
+	(ВНИМАНИЕ! ПРИ ДОБАВЛЕНИИ НОВОГО КЛАССА СУЩЕСТВА СЮДА НЕОБХОДИМО ДОБАВИТЬ СООТВЕТСВУЮЩИЙ КЕЙС!!!)
+	*/
+	Level& Level::destruction(Creature*& target) {
+
+		return *this;
+	}
+
+
 
 	// Ввод игрового поля
 	std::istream& operator >> (std::istream& is, Level& field) {
@@ -173,12 +187,29 @@ namespace XCom {
 	}
 
 
+	std::ostream& Level::save(std::ostream& os) {
+		os << squadOperative.size() << '\n';
+		for (auto iter = squadOperative.begin(); iter != squadOperative.end(); iter++)
+			(*iter)->save(os);
+		os << squadAliens.size() << '\n';
+		for (auto iter = squadAliens.begin(); iter != squadAliens.end(); iter++)
+			(*iter)->save(os);
+		int n = field[0].size();
+		int  m = field.size();
+		for (int i = 0; i < n; ++i)
+			for (int j = 0; j < m; ++j) {
+				field[j][i].save(os);
+			}
+		return os;
+	}
+
+
 	// Вывод игрового поля
 	std::ostream& operator << (std::ostream& os, const Level& field) {
 		int n = field.field[0].size();
 		int  m = field.field.size();
 		// Выводим координаты по X
-		os << ' ';
+		os << ' ' << ' ';
 		for (int i = 1; i <= n; ++i) {
 			int c = i, first;
 			while (c > 0) {
@@ -187,6 +218,9 @@ namespace XCom {
 			}
 			os << first;
 		}
+		os << '\n' << ' ' << ' ';
+		for (int i = 1; i <= n; ++i)
+			os << '-';
 		os << '\n';
 		for (int i = 0; i < m; ++i) {
 			int c = i + 1, first;
@@ -194,17 +228,39 @@ namespace XCom {
 				first = c % 10;
 				c /= 10;
 			}
-			os << first;
+			os << first << '|';
 			for (int j = 0; j < n; ++j)
-				if (field.field[i][j].get_creature())
-					if (field.field[i][j].get_creature()->name() == 0)
-						os << field.field[i][j].get_creature()->name();
-					else
-						os << field.field[i][j].get_creature()->name();
-				else
-					os << field.field[i][j];
+				os << field.field[i][j];
 			os << '\n';
 		}
+
+		os << " Команда оперативников:\n";
+		if (!field.squadOperative.size())
+			std::cout << "Команда пуста;\n";
+		else
+			for (auto iter = field.squadOperative.begin(); iter != field.squadOperative.end(); iter++)
+				std::cout << **iter << '\n';
+
+		os << " Команда Пришельцев:\n";
+		if (!field.squadAliens.size())
+			std::cout << "Команда пуста;\n";
+		else
+			for (auto iter = field.squadAliens.begin(); iter != field.squadAliens.end(); iter++)
+				std::cout << **iter << '\n';
+		os << "\n Предметы на земле:\n";
+		bool check = false;
+		for (int i = 0; i < n; ++i)
+			for (int j = 0; j < m; ++j) {
+				if (!field.field[j][i].empty()) {
+					os << "Клетка (" << i << "\\" << j << "):\n";
+					field.field[j][i].show_list(os);
+					check = true;
+				}
+			}
+		if (!check)
+			os << "Нет предметов.\n";
+
+		os << '\n';
 		return os;
 	}
 

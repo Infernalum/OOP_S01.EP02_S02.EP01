@@ -2,11 +2,13 @@
 
 namespace XCom {
 
-	Weapon::Weapon(const std::string& name, int up, int dam, int scat, double pen, int rad, const Ammo& ammo, int maxclip, double weight): Item(up) {
+	Weapon::Weapon(const std::string& name, const Ammo& amm, int up, int dam, int scat, double pen, int rad, int maxclip, double weight) : Item(ITEMID_WEAPON, up) {
 		if (dam < 0)
 			throw std::invalid_argument("Урон от оружия не может быть отрицательным. Попробуйте еще раз.");
 		if (scat < 0)
 			throw std::invalid_argument("Показатель разброса не может быть отрицательным. Попробуйте еще раз.");
+		if (scat > dam)
+			throw std::invalid_argument("Показатель разброса не может быть больше среднего урона. Попробуйте еще раз.");
 		if (pen < 0)
 			throw std::invalid_argument("Штраф к попаданию на дистанции не может быть отрицательным. Попробуйте еще раз.");
 		if (rad < 0)
@@ -15,15 +17,16 @@ namespace XCom {
 			throw std::invalid_argument("Вместительность обоимы не может быть отрицательной. Попробуйте еще раз.");
 		if (weight < 0)
 			throw std::invalid_argument("Вес оружия не может быть отрицательным. Попробуйте еще раз.");
-		marking = 'W';
+		classifier = name;
 		damage = dam;
+		scatter = scat;
 		penalty = pen;
 		radius = rad;
 		maxClip = maxclip;
-		clip = maxClip;
+		clip = maxclip;
 		weaponWeight = weight;
+		ammo = amm;
 		set_weight(0);
-
 	}
 
 	/********************************************************/
@@ -54,6 +57,8 @@ namespace XCom {
 	Weapon& Weapon::set_scatter(int scat) {
 		if (scat < 0)
 			throw std::invalid_argument("Показатель разброса не может быть отрицательным. Попробуйте еще раз.");
+		if (scat > damage)
+			throw std::invalid_argument("ПОказатель разброса не может быть больше среднего урона. Попробуйте еще раз.");
 		scatter = scat;
 		return *this;
 	}
@@ -75,9 +80,9 @@ namespace XCom {
 	}
 
 
-	Weapon& Weapon::set_max_clip(int mclip) {
-		if (mclip <= 0)
-			throw std::invalid_argument("Вместительность должна быть положительной. Попробуйте еще раз.");
+	Weapon& Weapon::set_maxClip(int mclip) {
+		if (mclip < 0)
+			throw std::invalid_argument("Вместительность не может быть отрицательнойы. Попробуйте еще раз.");
 		maxClip = mclip;
 		if (clip > maxClip) {
 			clip = maxClip;
@@ -98,12 +103,20 @@ namespace XCom {
 	}
 
 
-	Weapon& Weapon::set_weapon_weight(double w) {
+	Weapon& Weapon::set_weaponWeight(double w) {
 		if (w < 0)
 			throw std::invalid_argument("Вес оружия не может быть отрицательным. Попробуйте еще раз.");
 		weaponWeight = w;
 		return *this;
 	}
+
+	void Weapon::set_weight(double frictious) {
+		if (maxClip)
+			Item::set_weight(weaponWeight + ammo.get_weight() * clip);
+		else
+			Item::set_weight(weaponWeight);
+	}
+
 
 	/********************************************************/
 	/*					Остальные методы					*/
@@ -111,6 +124,10 @@ namespace XCom {
 
 
 	Weapon& Weapon::reloading(AmmoBox& ammobox) {
+		if (!maxClip)
+			throw std::logic_error("Нельзя перезаряжать оружие ближнего боя. Попробуйте еще раз.");
+		if (ammobox.get_ammo() != ammo)
+			throw std::invalid_argument("Неподходящий тип боеприпасов. Попробуйте еще раз.");
 		int res = ammobox.using_item(maxClip - clip);
 		set_clip(get_clip() + res);
 		return *this;
@@ -118,7 +135,6 @@ namespace XCom {
 
 
 	int Weapon::using_item(int fictitious) {
-		srand(time(0));
 		int res = (damage - scatter) + rand() % (damage + scatter);
 		if (res < 0)
 			res = 0;
@@ -128,7 +144,6 @@ namespace XCom {
 	}
 
 	std::pair<double, int> Weapon::calculate_the_hit(int distance) {
-		srand(time(0));
 		std::pair<double, int> res;
 		double chance = 95;
 		for (int i = 0; i < distance; ++i)
@@ -139,51 +154,39 @@ namespace XCom {
 	}
 
 	std::ostream& Weapon::print(std::ostream& os) const noexcept {
-		os << "Оружие: " << classifier << "; средний урон: " << damage << "; разброс урона: " << scatter << "; штраф к попаданию: " << penalty << "; радиус: " << radius << "; ";
+		os << classifier;
 		if (maxClip)
-			os << "магазин: " << clip << "\\" << maxClip << "; тип патронов: " << type << "; вес оружия (без боеприпасов): " << weaponWeight << "; ";
+			os << " (" << clip << "\\" << maxClip << "); ";
+		else
+			os << "; ";
+		os << "урон: " << damage - scatter << " - " << damage + scatter << "; штраф к расстоянию: " << penalty << "%; радиус: " << radius << "; ";
+		if (maxClip)
+			os << ammo;
 		Item::print(os);
 		return os;
 	}
 
 
 	std::ostream& Weapon::save(std::ostream& os) const noexcept {
-		os << get_uP() << ' ' << damage << ' ' << scatter << ' ' << penalty << ' ' << radius << ' ' << maxClip << ' ' << clip << ' ' << weaponWeight << ' ' << classifier << '\n';
-		os << type;
+		Item::save(os) << damage << ' ' << scatter << ' ' << penalty << ' ' << radius << ' ' << maxClip << ' ' << clip << ' ' << weaponWeight << ' ' << classifier << '\n';
+		if (maxClip)
+			ammo.save(os);
 		return os;
 	}
 
 	std::istream& Weapon::load(std::istream& is) noexcept {
-		int _int;
-		double _double;
-		std::string str;
-		is >> _int;
-		set_usedPoint(_int);
+		Item::load(is) >> damage;
+		is.ignore() >> scatter;
+		is.ignore() >> penalty;
+		is.ignore() >> radius;
+		is.ignore() >> maxClip;
+		is.ignore() >> clip;
+		is.ignore() >> weaponWeight;
 		is.ignore();
-		is >> _int;
-		set_scatter(_int);
-		is.ignore();
-		is >> _int;
-		set_penalty(_int);
-		is.ignore();
-		is >> _int;;
-		set_radius(_int);
-		is.ignore();
-		is >> _int;;
-		set_max_clip(_int);
-		is.ignore(); 
-		is >> _int;
-		set_clip(_int);
-		is.ignore();
-		is >> _double;
-		set_weapon_weight(_double);
+		std::getline(is, classifier);
+		if (maxClip)
+			ammo.load(is);
 		set_weight(0);
-		is.ignore();
-		std::getline(is, str);
-		set_classifier(str);
-		is >> type;
-		// Игнорируем всю оставшуюся строку, так, на всякий
-		is.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		return is;
 	}
 

@@ -6,16 +6,25 @@
 using namespace XCom;
 
 
-const std::string Cr[] = { "1. Криссалид", "0. Вернуться в меню" };
+const std::string Creatures[] = { "0. Вернуться в меню", "1. Оперативник" , "2. Фуражир ", "3. Дикое существо", "4. Разумное существо", };
 
-const int numCr = sizeof(Cr) / sizeof(Cr[0]);
+const int numCreatures = sizeof(Creatures) / sizeof(Creatures[0]);
 
-const std::string Menu[] = { "0. Выйти", "1. Добавить новое существо на поле", "2. Добавить новые предметы на поле / в инвентарь существа", "Изменить/удалить существующее существо" };
+const std::string Items[] = {"0. Вернуться в меню", "1. Оружейный ящик", "2. Аптечка первой помощи", "3. Оружие" };
+
+const int numItems = sizeof(Items) / sizeof(Items[0]);
+
+const std::string Menu[] = { "0. Выйти", "1. Изменить ландшафт поля" "2. Добавить новое существо на поле", "3. Добавить новые предметы на поле" };
 
 const int numMenu = sizeof(Menu) / sizeof(Menu[0]);
 
 
 namespace Editor {
+
+	// Загрузка карты из конфига
+
+
+	int dialog(const std::string msgs[], int N);
 
 	// Выбор существа
 	Creature* answer_1(const std::string msgs[], int, Creature*);
@@ -31,17 +40,23 @@ namespace Editor {
 	// Организация меню редактора карты
 	int Menu(Level&);
 
-	// Изменение клетки
+	// Изменение ландшафта (и предметов на полу)
 	void changeCell(Level&);
 
-	// Создание нового существа (возвращает nullptr при выходе либо указатель на успешно созданное существо)
-	void createCreature(Level&);
+	// Изменение существ в командах
+	void changeCreature(Level&);
+
+	// Создание нового предмета
+	Item* createItem();
+
+	// Создание нового существа 
+	Creature* createCreature();
 
 	// изменение/удаление старых существ
 	void changeCreature(Level&);
 
 	// Получение информации о крате, обо всех существах и обо всех предметах, лежащих на клетках
-	void getState(const Level&);
+	void getState(Level&);
 
 	void close(Level&);
 

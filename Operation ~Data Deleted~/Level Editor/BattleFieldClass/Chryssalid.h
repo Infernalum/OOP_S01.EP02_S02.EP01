@@ -5,8 +5,12 @@
 
 namespace XCom {
 
-	// Класс пришельца "Дикое существо"
-	/* У криссалида нет ни инвентаря, ни оружия (атакуют только в ближнем бою),
+	// Для объявления attack
+	class Operative;
+
+	
+	/*  
+		Класс пришельца "Дикое существо": у криссалида нет ни инвентаря, ни оружия (атакуют только в ближнем бою),
 	 но выделяются повышенной скоростью, уроном и уклонением
 	*/
 	class Chryssalid : public Creature {
@@ -17,18 +21,18 @@ namespace XCom {
 		int scatter;
 
 	protected:
-		virtual std::ostream& print(std::ostream&) const override;
+
+		virtual std::ostream& print(std::ostream&) const noexcept override;
 
 	public:
-
-		virtual const char name() const override { return marking; };
 
 		/********************************************************/
 		/*					 Конструкторы						*/
 		/********************************************************/
 
-		Chryssalid() : Creature(5, 50, 8, 0), damage(20), scatter(10) { marking = 'c'; };
+		Chryssalid() : Creature(CREATUREID_CHRYSSALID, 5, 50, 8, 0), damage(20), scatter(10) {};
 
+		// Виртуальный деструктор класса "Криссалид": ничего не делает, т.к. объект чисто статический
 		virtual ~Chryssalid() {};
 
 		/********************************************************/
@@ -49,14 +53,19 @@ namespace XCom {
 		/*					Остальные методы					*/
 		/********************************************************/
 
-		// Создание копии криссалида
-		virtual Chryssalid* clone() const override { return new Chryssalid(*this); };
 
-		// Атака клиссалида:может атаковать 8 клеток вокруг себя
-		virtual int get_damage(Creature*) override;
+		// Создание копии криссалида
+		virtual Chryssalid* clone() const noexcept override { return new Chryssalid(*this); };
+
+		/* 
+			Атака клиссалида: может атаковать 8 клеток вокруг себя. Возвращается строка "результата" (попадание, нет) и сам результат. 
+		Если было попадание, урон цели наносится здесь же, но уничтожение существа (если надо) происходит вне метода.
+
+		*/
+		std::pair<bool, std::string> attack(Operative*);
 
 		/*
-	Сохранение информациии о криссалиде: Creature::save+'damage'_'scatter'
+			Сохранение информациии о криссалиде: Creature::save+'damage'_'scatter'
 		*/
 		virtual std::ostream& save(std::ostream&) const noexcept override;
 
@@ -65,6 +74,8 @@ namespace XCom {
 
 		// Вывод информации о криссалиде во входной поток
 		friend std::ostream& operator << (std::ostream& os, const Chryssalid& ch) { return ch.print(os); };
+		// Загрузка информации о криссалиде из входного/файлового потока
+		friend std::istream& operator >>(std::istream& is, Chryssalid& ch) noexcept { return ch.load(is); };
 
 	};
 

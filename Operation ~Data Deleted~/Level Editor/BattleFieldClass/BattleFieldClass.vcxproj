@@ -158,6 +158,8 @@
     <ClInclude Include="Cell.h" />
     <ClInclude Include="Creature.h" />
     <ClInclude Include="Item.h" />
+    <ClInclude Include="Muton.h" />
+    <ClInclude Include="Operative.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Porter.h" />
     <ClInclude Include="Table.h" />
@@ -171,6 +173,8 @@
     <ClCompile Include="Cell.cpp" />
     <ClCompile Include="Creature.cpp" />
     <ClCompile Include="Item.cpp" />
+    <ClCompile Include="Muton.cpp" />
+    <ClCompile Include="Operative.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
@@ -179,9 +183,6 @@
     </ClCompile>
     <ClCompile Include="Porter.cpp" />
     <ClCompile Include="Weapon.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

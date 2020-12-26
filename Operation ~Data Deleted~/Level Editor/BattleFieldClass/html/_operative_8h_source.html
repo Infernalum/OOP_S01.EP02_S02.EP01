@@ -1,0 +1,203 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.20"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>My Fisrt Game: Исходный файл Operative.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">My Fisrt Game
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.8.20 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Поиск');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">Operative.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_operative_8h.html">См. документацию.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#ifndef OPERATIVE_H</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#define OPERATIVE_H</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">namespace </span>XCom {</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="class_x_com_1_1_operative.html">   19</a></span>&#160;    <span class="keyword">class </span><a class="code" href="class_x_com_1_1_operative.html">Operative</a> :<span class="keyword">public</span> <a class="code" href="class_x_com_1_1_creature.html">Creature</a> {</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        std::string callname;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        <span class="comment">// Спрайт оперативника (сами не вводим, менятся в зависимости от создаваемых </span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        <span class="keyword">static</span> <span class="keywordtype">char</span> idGenerator;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        <span class="keywordtype">char</span> spriteID;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        <span class="comment">// Инвентарь оперативника</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        <a class="code" href="classmystd_1_1_table.html">mystd::Table&lt;Item*&gt;</a> inventory;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <span class="comment">// Активное оружие оперативника</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        <a class="code" href="class_x_com_1_1_weapon.html">Weapon</a>* hand;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <span class="keyword">virtual</span> std::ostream&amp; <a class="code" href="class_x_com_1_1_operative.html#a9a7e51446e48649c9a043bddb74b379e">print</a>(std::ostream&amp;) <span class="keyword">const</span> noexcept <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="comment">        /********************************************************/</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        <span class="comment">/*                   Конструкторы                       */</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="comment">        /********************************************************/</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
+<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="class_x_com_1_1_operative.html#af3c4e6710e75fe40610651bf827de477">   62</a></span>&#160;        <a class="code" href="class_x_com_1_1_operative.html#af3c4e6710e75fe40610651bf827de477">Operative</a>(<span class="keyword">const</span> std::string&amp; name = <span class="stringliteral">&quot;Unknow&quot;</span>) noexcept : <a class="code" href="class_x_com_1_1_creature.html">Creature</a>(CREATUREID_OPERATIVE, 1, 1, 1, 20), spriteID(idGenerator++), callname(name), hand(), inventory() {};</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
+<div class="line"><a name="l00069"></a><span class="lineno"><a class="line" href="class_x_com_1_1_operative.html#a855aa3b510084cc595dddbe133023c4a">   69</a></span>&#160;        <a class="code" href="class_x_com_1_1_operative.html#a855aa3b510084cc595dddbe133023c4a">Operative</a>(<span class="keyword">const</span> <a class="code" href="class_x_com_1_1_operative.html">Operative</a>&amp; copy) noexcept : callname(copy.callname), spriteID(copy.spriteID), inventory(copy.inventory), hand(copy.hand) {};</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        <a class="code" href="class_x_com_1_1_operative.html">Operative</a>&amp; <a class="code" href="class_x_com_1_1_operative.html#a52bf323d0319e5cb0d1684b8a04a50f7">operator =</a>(<span class="keyword">const</span> <a class="code" href="class_x_com_1_1_operative.html">Operative</a>&amp;) noexcept;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
+<div class="line"><a name="l00084"></a><span class="lineno"><a class="line" href="class_x_com_1_1_operative.html#a4e805d9e8447ce7f8fe62c213741815b">   84</a></span>&#160;        <a class="code" href="class_x_com_1_1_operative.html#a4e805d9e8447ce7f8fe62c213741815b">Operative</a>(<a class="code" href="class_x_com_1_1_operative.html">Operative</a>&amp;&amp; move) noexcept : callname(std::move(move.callname)), spriteID(move.spriteID), inventory(std::move(move.inventory)), hand(move.hand) {};</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        <a class="code" href="class_x_com_1_1_operative.html">Operative</a>&amp; <a class="code" href="class_x_com_1_1_operative.html#a52bf323d0319e5cb0d1684b8a04a50f7">operator =</a>(<a class="code" href="class_x_com_1_1_operative.html">Operative</a>&amp;&amp;) noexcept;</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160; </div>
+<div class="line"><a name="l00102"></a><span class="lineno"><a class="line" href="class_x_com_1_1_operative.html#a8c4917143c8ce9380c1b8e7fd1474937">  102</a></span>&#160;        virtual ~<a class="code" href="class_x_com_1_1_operative.html">Operative</a>() noexcept {};</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160; </div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160; </div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="comment">        /********************************************************/</span></div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        <span class="comment">/*                      Геттеры                         */</span></div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="comment">        /********************************************************/</span></div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160; </div>
+<div class="line"><a name="l00113"></a><span class="lineno"><a class="line" href="class_x_com_1_1_operative.html#a0d87c072fe07f7ad55c25da313068158">  113</a></span>&#160;        std::string <a class="code" href="class_x_com_1_1_operative.html#a0d87c072fe07f7ad55c25da313068158">get_callname</a>() const noexcept { <span class="keywordflow">return</span> callname; };</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160; </div>
+<div class="line"><a name="l00121"></a><span class="lineno"><a class="line" href="class_x_com_1_1_operative.html#a9c398ea5da24a462bbf4a1b4da64980a">  121</a></span>&#160;        <span class="keywordtype">char</span> <a class="code" href="class_x_com_1_1_operative.html#a9c398ea5da24a462bbf4a1b4da64980a">get_spriteID</a>() const noexcept { <span class="keywordflow">return</span> spriteID; };</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160; </div>
+<div class="line"><a name="l00127"></a><span class="lineno"><a class="line" href="class_x_com_1_1_operative.html#a4ef92c3694bb0d8be7222a54f869aa81">  127</a></span>&#160;        <span class="keywordtype">int</span> <a class="code" href="class_x_com_1_1_operative.html#a4ef92c3694bb0d8be7222a54f869aa81">size</a>() const noexcept { <span class="keywordflow">return</span> inventory.size(); };</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160; </div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;        <span class="keywordtype">double</span> <a class="code" href="class_x_com_1_1_operative.html#ab504745453fe29ebf28768f366fed604">total_weight</a>() const noexcept;</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160; </div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;        std::ostream&amp; <a class="code" href="class_x_com_1_1_operative.html#a940df89bd8bd560c0ba651d14ea40e6f">show_table</a>(std::ostream&amp;) const noexcept;</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160; </div>
+<div class="line"><a name="l00146"></a><span class="lineno"><a class="line" href="class_x_com_1_1_operative.html#af832aa0c4f8ab2b5661797a80f43e92f">  146</a></span>&#160;        const <a class="code" href="class_x_com_1_1_weapon.html">Weapon</a>* <a class="code" href="class_x_com_1_1_operative.html#af832aa0c4f8ab2b5661797a80f43e92f">get_hand</a>() const noexcept { <span class="keywordflow">return</span> hand; };</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160; </div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160; </div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;<span class="comment">        /********************************************************/</span></div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;        <span class="comment">/*                      Сеттеры                         */</span></div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;<span class="comment">        /********************************************************/</span></div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160; </div>
+<div class="line"><a name="l00158"></a><span class="lineno"><a class="line" href="class_x_com_1_1_operative.html#abfb3bd4fe405e01d47a900ed6757dd19">  158</a></span>&#160;        <a class="code" href="class_x_com_1_1_operative.html">Operative</a>&amp; <a class="code" href="class_x_com_1_1_operative.html#abfb3bd4fe405e01d47a900ed6757dd19">set_callname</a>(<span class="keyword">const</span> std::string&amp; str) noexcept { callname = str; <span class="keywordflow">return</span> *<span class="keyword">this</span>; };</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160; </div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;        <a class="code" href="class_x_com_1_1_weapon.html">Weapon</a>* <a class="code" href="class_x_com_1_1_operative.html#acb43c47ea952a3c89118ea1daf5d40d4">change_weapon</a>(<a class="code" href="class_x_com_1_1_weapon.html">Weapon</a>*) noexcept;</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160; </div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;<span class="comment">        /********************************************************/</span></div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;        <span class="comment">/*                  Остальные методы                    */</span></div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;<span class="comment">        /********************************************************/</span></div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160; </div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160; </div>
+<div class="line"><a name="l00178"></a><span class="lineno"><a class="line" href="class_x_com_1_1_operative.html#a10023b6506daa4aad4013fb40817e334">  178</a></span>&#160;        <a class="code" href="class_x_com_1_1_operative.html">Operative</a>&amp; <a class="code" href="class_x_com_1_1_operative.html#a10023b6506daa4aad4013fb40817e334">add_item</a>(<a class="code" href="class_x_com_1_1_item.html">Item</a>* item) noexcept { inventory.push_back(item); <span class="keywordflow">return</span> *<span class="keyword">this</span>; };</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160; </div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;        <a class="code" href="class_x_com_1_1_item.html">Item</a>* <a class="code" href="class_x_com_1_1_operative.html#a5f1cd192808bd5025faa53254f27d241">drop_item</a>(<span class="keywordtype">int</span> pos);</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160; </div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;        <a class="code" href="class_x_com_1_1_item.html">Item</a>* <a class="code" href="class_x_com_1_1_operative.html#ad23b2133afa23d58f31a52e439462152">select_item</a>(<span class="keywordtype">int</span>);</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160; </div>
+<div class="line"><a name="l00205"></a><span class="lineno"><a class="line" href="class_x_com_1_1_operative.html#a5dbd96f2bca44c2a66892c0c9adf5d47">  205</a></span>&#160;        <span class="keyword">virtual</span> <a class="code" href="class_x_com_1_1_operative.html">Operative</a>* <a class="code" href="class_x_com_1_1_operative.html#a5dbd96f2bca44c2a66892c0c9adf5d47">clone</a>() const noexcept<span class="keyword"> override </span>{ <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="class_x_com_1_1_operative.html#af3c4e6710e75fe40610651bf827de477">Operative</a>(*<span class="keyword">this</span>); };</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160; </div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;        <span class="keyword">virtual</span> std::ostream&amp; <a class="code" href="class_x_com_1_1_operative.html#a6c866cb464796fa94ac9ea686c5d35be">save</a>(std::ostream&amp;) <span class="keyword">const</span> noexcept <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160; </div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;        <span class="keyword">virtual</span> std::istream&amp; <a class="code" href="class_x_com_1_1_operative.html#a05c391ca7d24f06313a82deaf3865d46">load</a>(std::istream&amp;) noexcept <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160; </div>
+<div class="line"><a name="l00235"></a><span class="lineno"><a class="line" href="class_x_com_1_1_operative.html#a775eb81385cb5b31e4b09856dac5b7d7">  235</a></span>&#160;        <span class="keyword">friend</span> std::ostream&amp; <a class="code" href="class_x_com_1_1_operative.html#a775eb81385cb5b31e4b09856dac5b7d7">operator &lt;&lt; </a>(std::ostream&amp; os, <span class="keyword">const</span> <a class="code" href="class_x_com_1_1_operative.html">Operative</a>&amp; oper) { <span class="keywordflow">return</span> oper.<a class="code" href="class_x_com_1_1_operative.html#a9a7e51446e48649c9a043bddb74b379e">print</a>(os); };</div>
+<div class="line"><a name="l00242"></a><span class="lineno"><a class="line" href="class_x_com_1_1_operative.html#a87cc9a416a776f46923bb68b4bc13bdd">  242</a></span>&#160;        <span class="keyword">friend</span> std::istream&amp; <a class="code" href="class_x_com_1_1_operative.html#a87cc9a416a776f46923bb68b4bc13bdd">operator &gt;&gt;</a>(std::istream&amp; is, <a class="code" href="class_x_com_1_1_operative.html">Operative</a>&amp; oper) noexcept { <span class="keywordflow">return</span> oper.load(is); };</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160; </div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;    };</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160; </div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160; </div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160; </div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160; </div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;}</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160; </div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;<span class="preprocessor">#endif // !OPERATIVE_H</span></div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160; </div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160; </div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160; </div>
+</div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="aclass_x_com_1_1_operative_html_a0d87c072fe07f7ad55c25da313068158"><div class="ttname"><a href="class_x_com_1_1_operative.html#a0d87c072fe07f7ad55c25da313068158">XCom::Operative::get_callname</a></div><div class="ttdeci">std::string get_callname() const noexcept</div><div class="ttdoc">Получить позывной оперативника.</div><div class="ttdef"><b>Definition:</b> Operative.h:113</div></div>
+<div class="ttc" id="aclass_x_com_1_1_operative_html_a6c866cb464796fa94ac9ea686c5d35be"><div class="ttname"><a href="class_x_com_1_1_operative.html#a6c866cb464796fa94ac9ea686c5d35be">XCom::Operative::save</a></div><div class="ttdeci">virtual std::ostream &amp; save(std::ostream &amp;) const noexcept override</div><div class="ttdoc">Вывод информации об оперативнике в выходной поток.</div><div class="ttdef"><b>Definition:</b> Operative.cpp:94</div></div>
+<div class="ttc" id="aclass_x_com_1_1_operative_html_af3c4e6710e75fe40610651bf827de477"><div class="ttname"><a href="class_x_com_1_1_operative.html#af3c4e6710e75fe40610651bf827de477">XCom::Operative::Operative</a></div><div class="ttdeci">Operative(const std::string &amp;name=&quot;Unknow&quot;) noexcept</div><div class="ttdoc">Пустой конструктор преобразования.</div><div class="ttdef"><b>Definition:</b> Operative.h:62</div></div>
+<div class="ttc" id="aclass_x_com_1_1_operative_html_af832aa0c4f8ab2b5661797a80f43e92f"><div class="ttname"><a href="class_x_com_1_1_operative.html#af832aa0c4f8ab2b5661797a80f43e92f">XCom::Operative::get_hand</a></div><div class="ttdeci">const Weapon * get_hand() const noexcept</div><div class="ttdoc">Получение константного указателя на оружие в руке.</div><div class="ttdef"><b>Definition:</b> Operative.h:146</div></div>
+<div class="ttc" id="aclass_x_com_1_1_operative_html_a775eb81385cb5b31e4b09856dac5b7d7"><div class="ttname"><a href="class_x_com_1_1_operative.html#a775eb81385cb5b31e4b09856dac5b7d7">XCom::Operative::operator&lt;&lt;</a></div><div class="ttdeci">friend std::ostream &amp; operator&lt;&lt;(std::ostream &amp;os, const Operative &amp;oper)</div><div class="ttdoc">Вывод информации об оперативнике в выходной поток.</div><div class="ttdef"><b>Definition:</b> Operative.h:235</div></div>
+<div class="ttc" id="aclass_x_com_1_1_operative_html_a855aa3b510084cc595dddbe133023c4a"><div class="ttname"><a href="class_x_com_1_1_operative.html#a855aa3b510084cc595dddbe133023c4a">XCom::Operative::Operative</a></div><div class="ttdeci">Operative(const Operative &amp;copy) noexcept</div><div class="ttdoc">Копирующий конструктор.</div><div class="ttdef"><b>Definition:</b> Operative.h:69</div></div>
+<div class="ttc" id="aclass_x_com_1_1_operative_html_acb43c47ea952a3c89118ea1daf5d40d4"><div class="ttname"><a href="class_x_com_1_1_operative.html#acb43c47ea952a3c89118ea1daf5d40d4">XCom::Operative::change_weapon</a></div><div class="ttdeci">Weapon * change_weapon(Weapon *) noexcept</div><div class="ttdoc">Выбросить/подобрать оружие.</div><div class="ttdef"><b>Definition:</b> Operative.cpp:48</div></div>
+<div class="ttc" id="aclass_x_com_1_1_operative_html_ab504745453fe29ebf28768f366fed604"><div class="ttname"><a href="class_x_com_1_1_operative.html#ab504745453fe29ebf28768f366fed604">XCom::Operative::total_weight</a></div><div class="ttdeci">double total_weight() const noexcept</div><div class="ttdoc">Получение суммарного веса инвентаря.</div><div class="ttdef"><b>Definition:</b> Operative.cpp:55</div></div>
+<div class="ttc" id="aclass_x_com_1_1_operative_html_a05c391ca7d24f06313a82deaf3865d46"><div class="ttname"><a href="class_x_com_1_1_operative.html#a05c391ca7d24f06313a82deaf3865d46">XCom::Operative::load</a></div><div class="ttdeci">virtual std::istream &amp; load(std::istream &amp;) noexcept override</div><div class="ttdoc">Загрузка информации об оперативнике из входного/файлового потока.</div><div class="ttdef"><b>Definition:</b> Operative.cpp:110</div></div>
+<div class="ttc" id="aclass_x_com_1_1_operative_html_a4e805d9e8447ce7f8fe62c213741815b"><div class="ttname"><a href="class_x_com_1_1_operative.html#a4e805d9e8447ce7f8fe62c213741815b">XCom::Operative::Operative</a></div><div class="ttdeci">Operative(Operative &amp;&amp;move) noexcept</div><div class="ttdoc">Перемещающий конструктор.</div><div class="ttdef"><b>Definition:</b> Operative.h:84</div></div>
+<div class="ttc" id="aclass_x_com_1_1_weapon_html"><div class="ttname"><a href="class_x_com_1_1_weapon.html">XCom::Weapon</a></div><div class="ttdef"><b>Definition:</b> Weapon.h:7</div></div>
+<div class="ttc" id="aclass_x_com_1_1_item_html"><div class="ttname"><a href="class_x_com_1_1_item.html">XCom::Item</a></div><div class="ttdef"><b>Definition:</b> Item.h:16</div></div>
+<div class="ttc" id="aclass_x_com_1_1_operative_html_a87cc9a416a776f46923bb68b4bc13bdd"><div class="ttname"><a href="class_x_com_1_1_operative.html#a87cc9a416a776f46923bb68b4bc13bdd">XCom::Operative::operator&gt;&gt;</a></div><div class="ttdeci">friend std::istream &amp; operator&gt;&gt;(std::istream &amp;is, Operative &amp;oper) noexcept</div><div class="ttdoc">Загрузка информации об оперативнике из входного/файлового потока.</div><div class="ttdef"><b>Definition:</b> Operative.h:242</div></div>
+<div class="ttc" id="aclass_x_com_1_1_operative_html_a4ef92c3694bb0d8be7222a54f869aa81"><div class="ttname"><a href="class_x_com_1_1_operative.html#a4ef92c3694bb0d8be7222a54f869aa81">XCom::Operative::size</a></div><div class="ttdeci">int size() const noexcept</div><div class="ttdoc">Получение кол-ва вещей в инвентаре.</div><div class="ttdef"><b>Definition:</b> Operative.h:127</div></div>
+<div class="ttc" id="aclass_x_com_1_1_operative_html_abfb3bd4fe405e01d47a900ed6757dd19"><div class="ttname"><a href="class_x_com_1_1_operative.html#abfb3bd4fe405e01d47a900ed6757dd19">XCom::Operative::set_callname</a></div><div class="ttdeci">Operative &amp; set_callname(const std::string &amp;str) noexcept</div><div class="ttdoc">Изменить позывной оперативника.</div><div class="ttdef"><b>Definition:</b> Operative.h:158</div></div>
+<div class="ttc" id="aclass_x_com_1_1_operative_html_ad23b2133afa23d58f31a52e439462152"><div class="ttname"><a href="class_x_com_1_1_operative.html#ad23b2133afa23d58f31a52e439462152">XCom::Operative::select_item</a></div><div class="ttdeci">Item * select_item(int)</div><div class="ttdoc">Выбрать предмет.</div><div class="ttdef"><b>Definition:</b> Operative.cpp:86</div></div>
+<div class="ttc" id="aclassmystd_1_1_table_html"><div class="ttname"><a href="classmystd_1_1_table.html">mystd::Table</a></div><div class="ttdef"><b>Definition:</b> Table.h:16</div></div>
+<div class="ttc" id="aclass_x_com_1_1_creature_html"><div class="ttname"><a href="class_x_com_1_1_creature.html">XCom::Creature</a></div><div class="ttdef"><b>Definition:</b> Creature.h:21</div></div>
+<div class="ttc" id="aclass_x_com_1_1_operative_html_a5dbd96f2bca44c2a66892c0c9adf5d47"><div class="ttname"><a href="class_x_com_1_1_operative.html#a5dbd96f2bca44c2a66892c0c9adf5d47">XCom::Operative::clone</a></div><div class="ttdeci">virtual Operative * clone() const noexcept override</div><div class="ttdoc">Создание копии оперативника.</div><div class="ttdef"><b>Definition:</b> Operative.h:205</div></div>
+<div class="ttc" id="aclass_x_com_1_1_operative_html"><div class="ttname"><a href="class_x_com_1_1_operative.html">XCom::Operative</a></div><div class="ttdoc">Класс &quot;Оперативник&quot;.</div><div class="ttdef"><b>Definition:</b> Operative.h:19</div></div>
+<div class="ttc" id="aclass_x_com_1_1_operative_html_a9c398ea5da24a462bbf4a1b4da64980a"><div class="ttname"><a href="class_x_com_1_1_operative.html#a9c398ea5da24a462bbf4a1b4da64980a">XCom::Operative::get_spriteID</a></div><div class="ttdeci">char get_spriteID() const noexcept</div><div class="ttdoc">Получить спрайт оперативника</div><div class="ttdef"><b>Definition:</b> Operative.h:121</div></div>
+<div class="ttc" id="aclass_x_com_1_1_operative_html_a5f1cd192808bd5025faa53254f27d241"><div class="ttname"><a href="class_x_com_1_1_operative.html#a5f1cd192808bd5025faa53254f27d241">XCom::Operative::drop_item</a></div><div class="ttdeci">Item * drop_item(int pos)</div><div class="ttdoc">Выбросить (НЕ УДАЛИТЬ) предмет из инвентаря.</div><div class="ttdef"><b>Definition:</b> Operative.cpp:77</div></div>
+<div class="ttc" id="aclass_x_com_1_1_operative_html_a9a7e51446e48649c9a043bddb74b379e"><div class="ttname"><a href="class_x_com_1_1_operative.html#a9a7e51446e48649c9a043bddb74b379e">XCom::Operative::print</a></div><div class="ttdeci">virtual std::ostream &amp; print(std::ostream &amp;) const noexcept override</div><div class="ttdoc">Вывод информации об оперативнике</div><div class="ttdef"><b>Definition:</b> Operative.cpp:34</div></div>
+<div class="ttc" id="aclass_x_com_1_1_operative_html_a52bf323d0319e5cb0d1684b8a04a50f7"><div class="ttname"><a href="class_x_com_1_1_operative.html#a52bf323d0319e5cb0d1684b8a04a50f7">XCom::Operative::operator=</a></div><div class="ttdeci">Operative &amp; operator=(const Operative &amp;) noexcept</div><div class="ttdoc">Копирующий оператор присваивания.</div><div class="ttdef"><b>Definition:</b> Operative.cpp:10</div></div>
+<div class="ttc" id="aclass_x_com_1_1_operative_html_a940df89bd8bd560c0ba651d14ea40e6f"><div class="ttname"><a href="class_x_com_1_1_operative.html#a940df89bd8bd560c0ba651d14ea40e6f">XCom::Operative::show_table</a></div><div class="ttdeci">std::ostream &amp; show_table(std::ostream &amp;) const noexcept</div><div class="ttdoc">Вывод всего инвентаря.</div><div class="ttdef"><b>Definition:</b> Operative.cpp:63</div></div>
+<div class="ttc" id="aclass_x_com_1_1_operative_html_a10023b6506daa4aad4013fb40817e334"><div class="ttname"><a href="class_x_com_1_1_operative.html#a10023b6506daa4aad4013fb40817e334">XCom::Operative::add_item</a></div><div class="ttdeci">Operative &amp; add_item(Item *item) noexcept</div><div class="ttdoc">Добавить новый предмет в инвентарь оперативника.</div><div class="ttdef"><b>Definition:</b> Operative.h:178</div></div>
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Создано системой&#160;<a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20
+</small></address>
+</body>
+</html>

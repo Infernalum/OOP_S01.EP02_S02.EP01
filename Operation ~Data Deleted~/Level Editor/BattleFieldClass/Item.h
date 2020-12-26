@@ -4,6 +4,14 @@
 
 namespace XCom {
 
+	// Перечисление типов предметов 
+	enum ItemID {
+		ITEMID_AMMOBOX = 1,
+		ITEMID_FIRSTAIDKIT,
+		ITEMID_WEAPON
+	};
+
+
 	// Базовый абстрактный класс "Предмет"
 	class Item {
 
@@ -15,9 +23,10 @@ namespace XCom {
 
 	protected:
 
-		virtual std::ostream& print(std::ostream&) const noexcept;
+		// Идентификатор предмета (см. enum в классе "Level")
+		int ID;
 
-		char marking;
+		virtual std::ostream& print(std::ostream&) const noexcept;
 
 	public:
 
@@ -30,9 +39,9 @@ namespace XCom {
 		// Копирующие/перемещающие конструкторы по умолчанию
 
 		// Единственный конструктор
-		Item(int uP = 1);
+		Item(int id = 1, int uP = 1);
 
-		// Виртуальный деструктор
+		// Виртуальный деструктор 
 		virtual ~Item() {};
 
 		/********************************************************/
@@ -40,8 +49,8 @@ namespace XCom {
 		/********************************************************/
 
 		double get_weight() const noexcept { return weight; };
-		int get_uP() const noexcept { return usedPoint; };
-		char get_name() const noexcept { return marking; };
+		int get_usedPoint() const noexcept { return usedPoint; };
+		char get_ID() const noexcept { return ID; };
 
 
 		/********************************************************/
@@ -65,16 +74,18 @@ namespace XCom {
 		/*					Остальные методы					*/
 		/********************************************************/
 
-		// Чисто виртуальный метод сохранения информации о предмете в выходной/файловый поток
-		virtual std::ostream& save(std::ostream&) const noexcept = 0;
 
-		// Чисто виртуальный метод загрузки информации о предмете из входного/файлового потока
-		virtual std::istream& load(std::istream&) noexcept = 0;
+		// Вывод базовой информации о предмете (не для сохранения в файл)
+		friend std::ostream& operator <<(std::ostream& os, const Item& item) noexcept { return item.print(os); };
+
+		// Виртуальный метод сохранения базовой информации о предмете в выходной/файловый поток: 'used_points'_'weight'_
+		virtual std::ostream& save(std::ostream&) const noexcept;
+
+		// Виртуальный метод загрузки базовой информации о предмете из входного/файлового потока
+		virtual std::istream& load(std::istream&) noexcept;
 
 		// Создание копии предмета
 		virtual Item* clone() const noexcept = 0;
-
-		friend std::ostream& operator << (std::ostream& os, const Item& c) { return c.print(os); };
 
 	};
 
@@ -82,6 +93,7 @@ namespace XCom {
 	// Вспомогательный класс "Патрон"
 	class Ammo {
 
+		// Тип и вес патрона
 		std::pair<std::string, double> type;
 
 	public:
@@ -110,7 +122,9 @@ namespace XCom {
 		std::istream& load(std::istream&) noexcept;
 
 		// Для работы find() в векторе типов патронов (чтобы гарантировать индивидуальность типов патронов)
-		bool operator ==(const Ammo& cur) noexcept{ return type == cur.type; };
+		bool operator ==(const Ammo& cur) noexcept { return type == cur.type; };
+		// Для работы find() в векторе типов патронов (чтобы гарантировать индивидуальность типов патронов)
+		bool operator !=(const Ammo& cur) noexcept { return type != cur.type; };
 		// Вывод информации о типе патрона (не для сохранения в файл)
 		friend std::ostream& operator <<(std::ostream&, const Ammo&) noexcept;
 		// Загрузка информации о типе патрона из входного/файлового

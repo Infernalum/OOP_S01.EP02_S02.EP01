@@ -8,7 +8,7 @@ namespace XCom {
 	class AmmoBox : public Item {
 
 		// Тип хранящегося патрона
-		Ammo type;
+		Ammo ammo;
 		// Текущее кол-во патронов в ящике;
 		int qty;
 		// Общее кол-во патронов в ящике;
@@ -17,6 +17,7 @@ namespace XCom {
 
 	protected:
 
+		// Метод консольной информации о ящике (для самой игры, в не сохранения)
 		virtual std::ostream& print(std::ostream&) const noexcept override;
 
 	public:
@@ -26,7 +27,7 @@ namespace XCom {
 		/********************************************************/
 
 		// Конструктор, создающий полный ящик с 40 стандартными патронами и тратящий 2 TP на перезарядку
-		AmmoBox(int up = 2, int maxqty = 40, const Ammo& ammo = Ammo::_default);
+		AmmoBox(const Ammo& ammo = Ammo::_default, int up = 2, int maxqty = 40);
 
 		// copy- move- конструкторы по умолчанию
 
@@ -38,8 +39,9 @@ namespace XCom {
 		/********************************************************/
 
 		int get_qty() const noexcept { return qty; };
-		int get_max_qty() const noexcept { return maxQty; };
-		Ammo get_type() const noexcept { return type; };
+		int get_maxQqty() const noexcept { return maxQty; };
+		// Получить тип патрона
+		Ammo get_ammo() const noexcept { return ammo; };
 
 		// Проверка ящика на пустоту
 		bool empty() const noexcept;
@@ -49,15 +51,12 @@ namespace XCom {
 		/********************************************************/
 
 		AmmoBox& set_qty(int);
-		AmmoBox& set_max_qty(int);
-		// Позволяет получить доступ к типу патронов
-		Ammo& access_to_type() noexcept { return type; };
-
-		AmmoBox& set_name(const std::string& name) noexcept { type.set_type(name); return *this; };
-		AmmoBox& set_weight_of_one(double);
+		AmmoBox& set_maxQty(int);
+		// Получить доступ к типу патронов
+		Ammo& change_ammo() noexcept { return ammo; };
 
 		// Пересчет веса ящика с патронами
-		virtual void set_weight(double fictitious) override { Item::set_weight(type.get_weight() * qty); };
+		virtual void set_weight(double fictitious) override { Item::set_weight(ammo.get_weight() * qty); };
 
 		/********************************************************/
 		/*					Остальные методы					*/

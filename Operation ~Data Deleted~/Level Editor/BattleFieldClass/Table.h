@@ -33,7 +33,7 @@ namespace mystd {
 		/********************************************************/
 
 		// Пустой конструктор
-		Table() noexcept : m_size(QUOTA), m_top(0), m_data() {};
+		Table() noexcept : m_size(QUOTA), m_top(0), m_data(new T[QUOTA]) {};
 
 		// Конструктор с выделением памяти под sz элементов
 		explicit Table(int sz) noexcept : m_size(sz), m_top(0), m_data(new T[m_size]) {};

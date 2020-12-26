@@ -28,8 +28,10 @@
 #include "FirstAidKit.h"
 #include "Weapon.h"
 #include "Creature.h"
-#include "Chryssalid.h"
 #include "Porter.h"
+#include "Chryssalid.h"
+#include "Muton.h"
+#include "Operative.h"
 #include "Cell.h"
 #include "Level.h"
 

@@ -1,6 +1,6 @@
 #include "Map Editor.h"
 
-extern const int numCr, numMenu;
+extern const int numCreatures, numMenu, numItems;
 
 namespace Editor {
 
@@ -10,7 +10,6 @@ namespace Editor {
 		short n, m;
 		while (true) {
 			try {
-				system("cls");
 				std::cout << "Введите длину карты (в пикселях): ";
 				inputType(n, std::cin, std::cout);
 				std::cout << "Введите ширину карты (в пикселях): ";
@@ -40,30 +39,33 @@ namespace Editor {
 	Меню редактора:
 	1) Изменить клетку (изменить тип клетки, добавить предмет на клетку, удалить предмет с клетки)
 	2) Добавить новое существо;
-	3) Изменить какое-тосущество;
+	3) Изменить какое-то существо;
 	*/
 	int Menu(Level& lvl) {
 		getState(lvl);
-		int rc = 0;
-		std::cout << "Выберите действие:\n 1 - Изменить клетку (изменить тип, добавить/удалить предемет, изменить предмет);\n 2 - Добавить новое существо;\n 3 - Изменить какое-то существо (изменить хар-ки, переставить, удалить);\n 0 - Выход;\n --> ";
-		do
-			inputType(rc, std::cin, std::cout);
-		while (rc > 3 || rc < 0);
-		switch (rc) {
-		case 0:
-			return rc;
-			break;
-		case 1:
-			changeCell(lvl);
-			break;
-		case 2:
-			createCreature(lvl);
-			break;
-		case 3:
-			changeCreature(lvl);
-			break;
+		int rc = 1;
+		while (rc) {
+			std::cout << "Выберите действие:\n 1 - Изменить клетку (изменить тип, добавить/удалить предмет, изменить предмет);\n 2 - Добавить новое существо;\n 3 - Изменить какое-то существо (изменить хар-ки, переставить, удалить);\n 0 - Выход;\n --> ";
+			do
+				inputType(rc, std::cin, std::cout);
+			while (rc > 3 || rc < 0);
+			switch (rc) {
+			case 0:
+				return rc;
+				break;
+			case 1:
+				changeCell(lvl);
+				break;
+			case 2:
+				changeCreature(lvl);
+				break;
+			case 3:
+				changeCreature(lvl);
+				break;
+			}
+			system("cls");
+			getState(lvl);
 		}
-		system("cls");
 		return rc;
 	}
 
@@ -96,47 +98,48 @@ namespace Editor {
 					std::cout << ex.what() << '\n';
 				}
 				break;
-			case 2:
+			case 2: {
+				Item* item = createItem();
+				lvl.acess_to_field()[y][x].add_new_item(item);
+				std::cout << "Предмет успешно добавлен!\n";
 				break;
 			}
+			case 3:
+				break;
+			}
+			getState(lvl);
+			std::cout << "Продолжить редактирование карты? 1 - Да, 2 - нет: --> \n";
+			do
+				inputType(rc, std::cin, std::cout);
+			while (rc < 1 || rc > 2);
+			if (rc == 2)
+				return;
 		}
 	}
 
-
-	// Создание нового существа и привязка его к полю
-	void createCreature(Level& lvl) {
-		Creature* ptr = nullptr;
-		//ptr = answer_1(Cr, numCr, ptr);
-		if (!ptr)
-			return;
-		//int ans_2 = answer_2(ptr, lvl);
-		/*while (ans_3 != 3) {
-			std::cout << "Теперь измените характеристики, присущие данному типу существа:\n";
-			switch (ans) {
-			case 1:
-				std::cout << " 1 - Урон в ближнем бою;\n 2 - Вернуться назад;\n 3 - Перейти дальше;\n 0 - Удалить существо и выйти в главное меню;\n";
-				int i;
-				do
-					inputType(i, std::cin, std::cout);
-				while (i < 0 || i > 3);
-				switch (i) {
-				case 1:
-					try {
-						ptr->set_damage(5);
-						close(lvl);
-						std::cout << "Урон существа успешно изменены.\n";
-					}
-					catch (const std::exception& ex) {
-						close(lvl);
-						std::cout << ex.what() << '\n';
-					}
-					break;
-				case 2:
-
-
-				}*/
-				//}
+	// Изменение существ в командах
+	void changeCreature(Level& lvl) {
+		while (true) {
+			Creature* creature = createCreature();
+			std::cout << "Введите координаты существа: -->\n x: ";
+			int x;
+			inputType(x, std::cin, std::cout);
+			std::cout << " y: ";
+			int y;
+			inputType(y, std::cin, std::cout);
+			lvl.add_to_level(creature, x, y);
+			std::cout << "Существо успешно добавлено на поле!\n";
+			getState(lvl);
+			std::cout << "Продолжить редактирование карты? 1 - Да, 2 - нет: --> \n";
+			int rc;
+			do
+				inputType(rc, std::cin, std::cout);
+			while (rc < 1 || rc > 2);
+			if (rc == 2)
+				return;
+		}
 	}
+
 
 
 	// Выбор существа
@@ -161,6 +164,91 @@ namespace Editor {
 		}
 		return ptr;
 	}*/
+
+
+	// Выбор номера альтернативы
+	int dialog(const std::string msgs[], int N) {
+		std::string errmsgs = "";
+		int rc, i;
+		do {
+			std::cout << errmsgs;
+			errmsgs = "Ошибка! Повторите ввод!";
+			for (i = 0; i < N; ++i)					// Вывод списка альтернатив
+				std::cout << (msgs[i]) << "\n";
+			printf("Выберите: --> ");
+		} while (getType(rc, std::cin) < 0 || rc >= N);
+		return rc;
+	}
+
+
+	// Создание нового предмета
+	Item* createItem() {
+		Item* item = nullptr;
+		std::cout << "Выберите предмет: --> \n";
+		int res = dialog(Items, numItems);
+		if (!res)
+			return nullptr;
+		switch (res) {
+		case ITEMID_AMMOBOX: {
+			item = new AmmoBox;
+
+			break;
+		};
+		case ITEMID_FIRSTAIDKIT: {
+			item = new FirstAidKit;
+
+			break;
+		};
+		case ITEMID_WEAPON: {
+			std::string name;
+			std::cout << "Введите название оружия: --> ";
+			std::getline(std::cin, name);
+			item = new Weapon(name);
+
+			break;
+		};
+		}
+
+		return item;
+	}
+
+
+	// Создание нового существа
+	Creature* createCreature() {
+		Creature* creature = nullptr;
+		std::cout << "Выберите существо: --> \n";
+		int res = dialog(Creatures, numCreatures) - 2;
+		if (res == -2)
+			return nullptr;
+		switch (res) {
+		case CREATUREID_OPERATIVE: {
+			std::string name;
+			std::cout << "Введите позывной оперативника: --> ";
+			std::getline(std::cin, name);
+			creature = new Operative(name);
+
+			break;
+		};
+		case CREATUREID_PORTER: {
+			creature = new Porter;
+
+			break;
+		};
+		case CREATUREID_CHRYSSALID: {
+			creature = new Chryssalid;
+
+			break;
+		};
+		case CREATUREID_MUTON: {
+			creature = new Muton;
+
+			break;
+		}
+		}
+
+		return creature;
+	}
+
 
 	// Изменение базовых характеристик существа (1 - идем дальше; 0 - удалили существо)
 	int answer_2(Creature* ptr, Level& lvl) {
@@ -217,18 +305,10 @@ namespace Editor {
 	}
 
 
-	// Изменение существа
-	void changeCreature(Level& lvl) {
-
-
-	}
-
 
 	// Получение полной информации по карте
-	void getState(const Level& lvl) {
+	void getState(Level& lvl) {
 		std::cout << "Ваша карта:\n" << lvl << '\n';
-
-
 	}
 
 

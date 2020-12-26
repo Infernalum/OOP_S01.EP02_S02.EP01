@@ -6,12 +6,11 @@ namespace XCom {
 	/*					 Конструкторы						*/
 	/********************************************************/
 
-	// Конструктор, создающий ящик с 40 патронами и тратящий 2 TP на перезарядку
-	AmmoBox::AmmoBox(int up, int maxqty,const Ammo& ammo) : Item(up) {
+
+	AmmoBox::AmmoBox(const Ammo& type, int up, int maxqty) : Item(ITEMID_AMMOBOX, up) {
 		if (maxqty < 0)
 			throw std::invalid_argument("Ящик не может иметь отрицательный боезапас. Попробуйте еще раз.");
-		marking = 'A';
-		type = ammo;
+		ammo = type;
 		maxQty = maxqty;
 		qty = maxqty;
 		set_weight(0);
@@ -24,7 +23,7 @@ namespace XCom {
 	/********************************************************/
 
 	// Проверка ящика на пустоту
-	bool AmmoBox::empty() const noexcept{
+	bool AmmoBox::empty() const noexcept {
 		if (!qty)
 			return true;
 		else
@@ -48,7 +47,7 @@ namespace XCom {
 	}
 
 
-	AmmoBox& AmmoBox::set_max_qty(int mq) {
+	AmmoBox& AmmoBox::set_maxQty(int mq) {
 		if (mq < 0)
 			throw std::invalid_argument("Максимальное кол-во патронов не может быть отрицательным. Попробуйте еще раз.");
 		maxQty = mq;
@@ -56,13 +55,6 @@ namespace XCom {
 			qty = maxQty;
 			set_weight(0);
 		}
-		return *this;
-	}
-
-
-	AmmoBox& AmmoBox::set_weight_of_one(double woo) {
-		type.set_weigth(woo);
-		set_weight(0);
 		return *this;
 	}
 
@@ -90,36 +82,24 @@ namespace XCom {
 
 
 	std::ostream& AmmoBox::print(std::ostream& os) const noexcept {
-		os << "Ящик с патронами; запас: " << qty << '\\' << maxQty << "; Вес: " << get_weight() << "; ";
+		os << "Ящик с патронами (" << qty << '\\' << maxQty << "); ";
 		Item::print(os);
+		os << ammo;
 		return os;
 	}
+
 
 	std::ostream& AmmoBox::save(std::ostream& os) const noexcept {
-		os << get_uP() << ' ' << qty << ' ' << maxQty << ' ' << type.get_weight() << ' ' << type.get_type() << '\n';
+		Item::save(os) << qty << ' ' << maxQty << '\n';
+		ammo.save(os);
 		return os;
 	}
 
+
 	std::istream& AmmoBox::load(std::istream& is) noexcept {
-		int _int;
-		double _double;
-		std::string name;
-		is >> _int;
-		set_usedPoint(_int);
-		is.ignore();
-		is >> _int;
-		set_qty(_int);
-		is.ignore();
-		is >> _int;
-		set_max_qty(_int);
-		is.ignore();
-		is >> _double;
-		set_weight_of_one(_double);
-		is.ignore();
-		std::getline(is, name);
-		set_name(name);
-		// Игнорируем всю оставшуюся строку, так, на всякий
-		is.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		Item::load(is) >> qty;
+		is.ignore() >> maxQty;
+		is.ignore() >> ammo;
 		return is;
 	}
 }

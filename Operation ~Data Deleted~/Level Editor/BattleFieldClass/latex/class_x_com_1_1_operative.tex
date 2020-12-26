@@ -1,0 +1,760 @@
+\hypertarget{class_x_com_1_1_operative}{}\doxysection{Класс X\+Com\+::Operative}
+\label{class_x_com_1_1_operative}\index{XCom::Operative@{XCom::Operative}}
+
+
+Класс \char`\"{}Оперативник\char`\"{}.  
+
+
+
+
+{\ttfamily \#include $<$Operative.\+h$>$}
+
+Граф наследования\+:X\+Com\+::Operative\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_x_com_1_1_operative}
+\end{center}
+\end{figure}
+\doxysubsection*{Открытые члены}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_x_com_1_1_operative_af3c4e6710e75fe40610651bf827de477}{Operative}} (const std\+::string \&name=\char`\"{}Unknow\char`\"{}) noexcept
+\begin{DoxyCompactList}\small\item\em Пустой конструктор преобразования. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_x_com_1_1_operative_a855aa3b510084cc595dddbe133023c4a}{Operative}} (const \mbox{\hyperlink{class_x_com_1_1_operative}{Operative}} \&copy) noexcept
+\begin{DoxyCompactList}\small\item\em Копирующий конструктор. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_x_com_1_1_operative}{Operative}} \& \mbox{\hyperlink{class_x_com_1_1_operative_a52bf323d0319e5cb0d1684b8a04a50f7}{operator=}} (const \mbox{\hyperlink{class_x_com_1_1_operative}{Operative}} \&) noexcept
+\begin{DoxyCompactList}\small\item\em Копирующий оператор присваивания. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_x_com_1_1_operative_a4e805d9e8447ce7f8fe62c213741815b}{Operative}} (\mbox{\hyperlink{class_x_com_1_1_operative}{Operative}} \&\&move) noexcept
+\begin{DoxyCompactList}\small\item\em Перемещающий конструктор. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_x_com_1_1_operative}{Operative}} \& \mbox{\hyperlink{class_x_com_1_1_operative_a3ac76d28913d31d59ed20dafba06434a}{operator=}} (\mbox{\hyperlink{class_x_com_1_1_operative}{Operative}} \&\&) noexcept
+\begin{DoxyCompactList}\small\item\em Перемещающий оператор присваивания. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_x_com_1_1_operative_a8c4917143c8ce9380c1b8e7fd1474937}{$\sim$\+Operative}} () noexcept
+\begin{DoxyCompactList}\small\item\em Виртуальный деструктор. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_x_com_1_1_operative_a0d87c072fe07f7ad55c25da313068158}{get\+\_\+callname}} () const noexcept
+\begin{DoxyCompactList}\small\item\em Получить позывной оперативника. \end{DoxyCompactList}\item 
+char \mbox{\hyperlink{class_x_com_1_1_operative_a9c398ea5da24a462bbf4a1b4da64980a}{get\+\_\+sprite\+ID}} () const noexcept
+\begin{DoxyCompactList}\small\item\em Получить спрайт оперативника \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_x_com_1_1_operative_a4ef92c3694bb0d8be7222a54f869aa81}{size}} () const noexcept
+\begin{DoxyCompactList}\small\item\em Получение кол-\/ва вещей в инвентаре. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_x_com_1_1_operative_ab504745453fe29ebf28768f366fed604}{total\+\_\+weight}} () const noexcept
+\begin{DoxyCompactList}\small\item\em Получение суммарного веса инвентаря. \end{DoxyCompactList}\item 
+std\+::ostream \& \mbox{\hyperlink{class_x_com_1_1_operative_a940df89bd8bd560c0ba651d14ea40e6f}{show\+\_\+table}} (std\+::ostream \&) const noexcept
+\begin{DoxyCompactList}\small\item\em Вывод всего инвентаря. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{class_x_com_1_1_weapon}{Weapon}} $\ast$ \mbox{\hyperlink{class_x_com_1_1_operative_af832aa0c4f8ab2b5661797a80f43e92f}{get\+\_\+hand}} () const noexcept
+\begin{DoxyCompactList}\small\item\em Получение константного указателя на оружие в руке. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_x_com_1_1_operative}{Operative}} \& \mbox{\hyperlink{class_x_com_1_1_operative_abfb3bd4fe405e01d47a900ed6757dd19}{set\+\_\+callname}} (const std\+::string \&str) noexcept
+\begin{DoxyCompactList}\small\item\em Изменить позывной оперативника. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_x_com_1_1_weapon}{Weapon}} $\ast$ \mbox{\hyperlink{class_x_com_1_1_operative_acb43c47ea952a3c89118ea1daf5d40d4}{change\+\_\+weapon}} (\mbox{\hyperlink{class_x_com_1_1_weapon}{Weapon}} $\ast$) noexcept
+\begin{DoxyCompactList}\small\item\em Выбросить/подобрать оружие. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_x_com_1_1_operative}{Operative}} \& \mbox{\hyperlink{class_x_com_1_1_operative_a10023b6506daa4aad4013fb40817e334}{add\+\_\+item}} (\mbox{\hyperlink{class_x_com_1_1_item}{Item}} $\ast$item) noexcept
+\begin{DoxyCompactList}\small\item\em Добавить новый предмет в инвентарь оперативника. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_x_com_1_1_item}{Item}} $\ast$ \mbox{\hyperlink{class_x_com_1_1_operative_a5f1cd192808bd5025faa53254f27d241}{drop\+\_\+item}} (int pos)
+\begin{DoxyCompactList}\small\item\em Выбросить (НЕ УДАЛИТЬ) предмет из инвентаря. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_x_com_1_1_item}{Item}} $\ast$ \mbox{\hyperlink{class_x_com_1_1_operative_ad23b2133afa23d58f31a52e439462152}{select\+\_\+item}} (int)
+\begin{DoxyCompactList}\small\item\em Выбрать предмет. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_x_com_1_1_operative}{Operative}} $\ast$ \mbox{\hyperlink{class_x_com_1_1_operative_a5dbd96f2bca44c2a66892c0c9adf5d47}{clone}} () const noexcept override
+\begin{DoxyCompactList}\small\item\em Создание копии оперативника. \end{DoxyCompactList}\item 
+virtual std\+::ostream \& \mbox{\hyperlink{class_x_com_1_1_operative_a6c866cb464796fa94ac9ea686c5d35be}{save}} (std\+::ostream \&) const noexcept override
+\begin{DoxyCompactList}\small\item\em Вывод информации об оперативнике в выходной поток. \end{DoxyCompactList}\item 
+virtual std\+::istream \& \mbox{\hyperlink{class_x_com_1_1_operative_a05c391ca7d24f06313a82deaf3865d46}{load}} (std\+::istream \&) noexcept override
+\begin{DoxyCompactList}\small\item\em Загрузка информации об оперативнике из входного/файлового потока. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Защищенные члены}
+\begin{DoxyCompactItemize}
+\item 
+virtual std\+::ostream \& \mbox{\hyperlink{class_x_com_1_1_operative_a9a7e51446e48649c9a043bddb74b379e}{print}} (std\+::ostream \&) const noexcept override
+\begin{DoxyCompactList}\small\item\em Вывод информации об оперативнике \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Друзья}
+\begin{DoxyCompactItemize}
+\item 
+std\+::ostream \& \mbox{\hyperlink{class_x_com_1_1_operative_a775eb81385cb5b31e4b09856dac5b7d7}{operator$<$$<$}} (std\+::ostream \&os, const \mbox{\hyperlink{class_x_com_1_1_operative}{Operative}} \&oper)
+\begin{DoxyCompactList}\small\item\em Вывод информации об оперативнике в выходной поток. \end{DoxyCompactList}\item 
+std\+::istream \& \mbox{\hyperlink{class_x_com_1_1_operative_a87cc9a416a776f46923bb68b4bc13bdd}{operator$>$$>$}} (std\+::istream \&is, \mbox{\hyperlink{class_x_com_1_1_operative}{Operative}} \&oper) noexcept
+\begin{DoxyCompactList}\small\item\em Загрузка информации об оперативнике из входного/файлового потока. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Дополнительные унаследованные члены}
+
+
+\doxysubsection{Подробное описание}
+Класс \char`\"{}Оперативник\char`\"{}. 
+
+Является производным классом базового абстрактного класса \char`\"{}Существо\char`\"{} 
+
+\doxysubsection{Конструктор(ы)}
+\mbox{\Hypertarget{class_x_com_1_1_operative_af3c4e6710e75fe40610651bf827de477}\label{class_x_com_1_1_operative_af3c4e6710e75fe40610651bf827de477}} 
+\index{XCom::Operative@{XCom::Operative}!Operative@{Operative}}
+\index{Operative@{Operative}!XCom::Operative@{XCom::Operative}}
+\doxysubsubsection{\texorpdfstring{Operative()}{Operative()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily X\+Com\+::\+Operative\+::\+Operative (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name = {\ttfamily \char`\"{}Unknow\char`\"{}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+Пустой конструктор преобразования. 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em \mbox{[}name\mbox{]}} & Позывной оперативника (по умолчанию \char`\"{}\+Unknow\char`\"{}) \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{62 : Creature(CREATUREID\_OPERATIVE, 1, 1, 1, 20), spriteID(idGenerator++), callname(name), hand(), inventory() \{\};}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_x_com_1_1_operative_a855aa3b510084cc595dddbe133023c4a}\label{class_x_com_1_1_operative_a855aa3b510084cc595dddbe133023c4a}} 
+\index{XCom::Operative@{XCom::Operative}!Operative@{Operative}}
+\index{Operative@{Operative}!XCom::Operative@{XCom::Operative}}
+\doxysubsubsection{\texorpdfstring{Operative()}{Operative()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily X\+Com\+::\+Operative\+::\+Operative (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_x_com_1_1_operative}{Operative}} \&}]{copy }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+Копирующий конструктор. 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em \mbox{[}copy\mbox{]}} & ссылка на экземпляр копирующего оперативника \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{69 : callname(copy.callname), spriteID(copy.spriteID), inventory(copy.inventory), hand(copy.hand) \{\};}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_x_com_1_1_operative_a4e805d9e8447ce7f8fe62c213741815b}\label{class_x_com_1_1_operative_a4e805d9e8447ce7f8fe62c213741815b}} 
+\index{XCom::Operative@{XCom::Operative}!Operative@{Operative}}
+\index{Operative@{Operative}!XCom::Operative@{XCom::Operative}}
+\doxysubsubsection{\texorpdfstring{Operative()}{Operative()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily X\+Com\+::\+Operative\+::\+Operative (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_x_com_1_1_operative}{Operative}} \&\&}]{move }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+Перемещающий конструктор. 
+
+Желателен, т.\+к. и для \mbox{\hyperlink{classmystd_1_1_table}{mystd\+::\+Table}}, и для string предусмотрена семантика перемещения \begin{DoxySeeAlso}{См. также}
+\mbox{\hyperlink{classmystd_1_1_table}{mystd\+::\+Table}} 
+\end{DoxySeeAlso}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{84 : callname(std::move(move.callname)), spriteID(move.spriteID), inventory(std::move(move.inventory)), hand(move.hand) \{\};}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_x_com_1_1_operative_a8c4917143c8ce9380c1b8e7fd1474937}\label{class_x_com_1_1_operative_a8c4917143c8ce9380c1b8e7fd1474937}} 
+\index{XCom::Operative@{XCom::Operative}!````~Operative@{$\sim$Operative}}
+\index{````~Operative@{$\sim$Operative}!XCom::Operative@{XCom::Operative}}
+\doxysubsubsection{\texorpdfstring{$\sim$Operative()}{~Operative()}}
+{\footnotesize\ttfamily virtual X\+Com\+::\+Operative\+::$\sim$\+Operative (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}, {\ttfamily [noexcept]}}
+
+
+
+Виртуальный деструктор. 
+
+Из-\/за того, что класс не имеет своих динамических полей, ничего не делает 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{102 \{\};}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Методы}
+\mbox{\Hypertarget{class_x_com_1_1_operative_a10023b6506daa4aad4013fb40817e334}\label{class_x_com_1_1_operative_a10023b6506daa4aad4013fb40817e334}} 
+\index{XCom::Operative@{XCom::Operative}!add\_item@{add\_item}}
+\index{add\_item@{add\_item}!XCom::Operative@{XCom::Operative}}
+\doxysubsubsection{\texorpdfstring{add\_item()}{add\_item()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_x_com_1_1_operative}{Operative}}\& X\+Com\+::\+Operative\+::add\+\_\+item (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_x_com_1_1_item}{Item}} $\ast$}]{item }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+Добавить новый предмет в инвентарь оперативника. 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em \mbox{[}item\mbox{]}} & указатель типа \mbox{\hyperlink{class_x_com_1_1_item}{Item}} на добавляемый предмет \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+\mbox{[}\mbox{\hyperlink{class_x_com_1_1_operative}{Operative}}\mbox{]} ссылка на экземпляр класса 
+\end{DoxyReturn}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{178 \{ inventory.push\_back(item); \textcolor{keywordflow}{return} *\textcolor{keyword}{this}; \};}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_x_com_1_1_operative_acb43c47ea952a3c89118ea1daf5d40d4}\label{class_x_com_1_1_operative_acb43c47ea952a3c89118ea1daf5d40d4}} 
+\index{XCom::Operative@{XCom::Operative}!change\_weapon@{change\_weapon}}
+\index{change\_weapon@{change\_weapon}!XCom::Operative@{XCom::Operative}}
+\doxysubsubsection{\texorpdfstring{change\_weapon()}{change\_weapon()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_x_com_1_1_weapon}{Weapon}} $\ast$ X\+Com\+::\+Operative\+::change\+\_\+weapon (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_x_com_1_1_weapon}{Weapon}} $\ast$}]{weapon }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+
+
+Выбросить/подобрать оружие. 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em \mbox{[}weapon\mbox{]}} & Указатель на оружие, которое нужно поместить в руку \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Указатель на предыдущее оружие, который нужно будет соотвествующим образом обработать 
+\end{DoxyReturn}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{48                                                             \{}
+\DoxyCodeLine{49         Weapon* \_old = hand;}
+\DoxyCodeLine{50         hand = weapon;}
+\DoxyCodeLine{51         \textcolor{keywordflow}{return} \_old;}
+\DoxyCodeLine{52     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_x_com_1_1_operative_a5dbd96f2bca44c2a66892c0c9adf5d47}\label{class_x_com_1_1_operative_a5dbd96f2bca44c2a66892c0c9adf5d47}} 
+\index{XCom::Operative@{XCom::Operative}!clone@{clone}}
+\index{clone@{clone}!XCom::Operative@{XCom::Operative}}
+\doxysubsubsection{\texorpdfstring{clone()}{clone()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{class_x_com_1_1_operative}{Operative}}$\ast$ X\+Com\+::\+Operative\+::clone (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}, {\ttfamily [noexcept]}}
+
+
+
+Создание копии оперативника. 
+
+Виртуальный метод создании копии оперативника \begin{DoxyReturn}{Возвращает}
+Указатель на новый экземпляр оперативника 
+\end{DoxyReturn}
+
+
+Замещает \mbox{\hyperlink{class_x_com_1_1_creature}{X\+Com\+::\+Creature}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{205 \{ \textcolor{keywordflow}{return} \textcolor{keyword}{new} \mbox{\hyperlink{class_x_com_1_1_operative_af3c4e6710e75fe40610651bf827de477}{Operative}}(*\textcolor{keyword}{this}); \};}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_x_com_1_1_operative_a5f1cd192808bd5025faa53254f27d241}\label{class_x_com_1_1_operative_a5f1cd192808bd5025faa53254f27d241}} 
+\index{XCom::Operative@{XCom::Operative}!drop\_item@{drop\_item}}
+\index{drop\_item@{drop\_item}!XCom::Operative@{XCom::Operative}}
+\doxysubsubsection{\texorpdfstring{drop\_item()}{drop\_item()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_x_com_1_1_item}{Item}} $\ast$ X\+Com\+::\+Operative\+::drop\+\_\+item (\begin{DoxyParamCaption}\item[{int}]{pos }\end{DoxyParamCaption})}
+
+
+
+Выбросить (НЕ УДАЛИТЬ) предмет из инвентаря. 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em \mbox{[}pos\mbox{]}} & НОМЕР предмета (не индекс) в инвентаре \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+указатель на удаляемый предмет 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Исключения}
+{\em Выход} & за границы размера инвентаря ($<$ 1 или $>$ size) \\
+\hline
+\end{DoxyExceptions}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{77                                       \{}
+\DoxyCodeLine{78         \textcolor{keywordflow}{if} (pos < 1 || pos > inventory.size())}
+\DoxyCodeLine{79             \textcolor{keywordflow}{throw} std::out\_of\_range(\textcolor{stringliteral}{"{}�������� � ����� ������� ��� � ���������. ���������� ��� ���."{}});}
+\DoxyCodeLine{80         Item* res = inventory[pos-\/-\/];}
+\DoxyCodeLine{81         inventory.erase(inventory.begin() + pos);}
+\DoxyCodeLine{82         \textcolor{keywordflow}{return} res;}
+\DoxyCodeLine{83     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_x_com_1_1_operative_a0d87c072fe07f7ad55c25da313068158}\label{class_x_com_1_1_operative_a0d87c072fe07f7ad55c25da313068158}} 
+\index{XCom::Operative@{XCom::Operative}!get\_callname@{get\_callname}}
+\index{get\_callname@{get\_callname}!XCom::Operative@{XCom::Operative}}
+\doxysubsubsection{\texorpdfstring{get\_callname()}{get\_callname()}}
+{\footnotesize\ttfamily std\+::string X\+Com\+::\+Operative\+::get\+\_\+callname (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+Получить позывной оперативника. 
+
+\begin{DoxyReturn}{Возвращает}
+string с позывным 
+\end{DoxyReturn}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{113 \{ \textcolor{keywordflow}{return} callname; \};}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_x_com_1_1_operative_af832aa0c4f8ab2b5661797a80f43e92f}\label{class_x_com_1_1_operative_af832aa0c4f8ab2b5661797a80f43e92f}} 
+\index{XCom::Operative@{XCom::Operative}!get\_hand@{get\_hand}}
+\index{get\_hand@{get\_hand}!XCom::Operative@{XCom::Operative}}
+\doxysubsubsection{\texorpdfstring{get\_hand()}{get\_hand()}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{class_x_com_1_1_weapon}{Weapon}}$\ast$ X\+Com\+::\+Operative\+::get\+\_\+hand (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+Получение константного указателя на оружие в руке. 
+
+\begin{DoxyReturn}{Возвращает}
+Указатель на оружие к руке оперативника 
+\end{DoxyReturn}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{146 \{ \textcolor{keywordflow}{return} hand; \};}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_x_com_1_1_operative_a9c398ea5da24a462bbf4a1b4da64980a}\label{class_x_com_1_1_operative_a9c398ea5da24a462bbf4a1b4da64980a}} 
+\index{XCom::Operative@{XCom::Operative}!get\_spriteID@{get\_spriteID}}
+\index{get\_spriteID@{get\_spriteID}!XCom::Operative@{XCom::Operative}}
+\doxysubsubsection{\texorpdfstring{get\_spriteID()}{get\_spriteID()}}
+{\footnotesize\ttfamily char X\+Com\+::\+Operative\+::get\+\_\+sprite\+ID (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+Получить спрайт оперативника 
+
+Получить символ, которым данный оперативник отображается на карте. \begin{DoxyReturn}{Возвращает}
+char, соотвествующий спрайту оперативника на карте 
+\end{DoxyReturn}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{121 \{ \textcolor{keywordflow}{return} spriteID; \};}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_x_com_1_1_operative_a05c391ca7d24f06313a82deaf3865d46}\label{class_x_com_1_1_operative_a05c391ca7d24f06313a82deaf3865d46}} 
+\index{XCom::Operative@{XCom::Operative}!load@{load}}
+\index{load@{load}!XCom::Operative@{XCom::Operative}}
+\doxysubsubsection{\texorpdfstring{load()}{load()}}
+{\footnotesize\ttfamily std\+::istream \& X\+Com\+::\+Operative\+::load (\begin{DoxyParamCaption}\item[{std\+::istream \&}]{is }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}, {\ttfamily [noexcept]}}
+
+
+
+Загрузка информации об оперативнике из входного/файлового потока. 
+
+Используется для загрузки конфигурации оперативника из файла
+
+Порядок загрузки\+: Creature\+::save + callname + inventory.\+size() + предметы + hand 
+\begin{DoxyParams}{Аргументы}
+{\em \mbox{[}is\mbox{]}} & Ссылка на входной поток \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Ссылка на тот же поток 
+\end{DoxyReturn}
+
+
+Переопределяет метод предка \mbox{\hyperlink{class_x_com_1_1_creature}{X\+Com\+::\+Creature}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{110                                                        \{}
+\DoxyCodeLine{111         Creature::load(is);}
+\DoxyCodeLine{112         \textcolor{keywordtype}{int} state;}
+\DoxyCodeLine{113         is.ignore() >> state;}
+\DoxyCodeLine{114         \textcolor{keywordflow}{if} (state) \{}
+\DoxyCodeLine{115             Weapon* wp = \textcolor{keyword}{new} Weapon;}
+\DoxyCodeLine{116             \textcolor{comment}{// ������� ������������� ��������       is.ignore() >> state;
+            is.ignore();
+            wp-\/>load(is);
+            hand = wp;
+        \}
+        else
+            is.ignore();
+        is >> state;
+        is.ignore();
+        int ID;
+        for (int i = 0; i < state; ++i) \{
+            Item* ptr = nullptr;
+            is >> ID;
+            is.ignore();
+            switch (ID) \{
+            case ITEMID\_AMMOBOX:
+                ptr = new AmmoBox;
+                ptr-\/>load(is);
+                break;
+            case ITEMID\_FIRSTAIDKIT:
+                ptr = new FirstAidKit;
+                ptr-\/>load(is);
+                break;
+            case ITEMID\_WEAPON:
+                ptr = new Weapon;
+                ptr-\/>load(is);
+                break;
+            \}
+            inventory.push\_back(ptr);
+        \}
+        return is;
+    \}
+}}
+\DoxyCodeLine{117             is.ignore() >> state;}
+\DoxyCodeLine{118             is.ignore();}
+\DoxyCodeLine{119             wp-\/>load(is);}
+\DoxyCodeLine{120             hand = wp;}
+\DoxyCodeLine{121         \}}
+\DoxyCodeLine{122         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{123             is.ignore();}
+\DoxyCodeLine{124         is >> state;}
+\DoxyCodeLine{125         is.ignore();}
+\DoxyCodeLine{126         \textcolor{keywordtype}{int} ID;}
+\DoxyCodeLine{127         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < state; ++i) \{}
+\DoxyCodeLine{128             Item* ptr = \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{129             is >> ID;}
+\DoxyCodeLine{130             is.ignore();}
+\DoxyCodeLine{131             \textcolor{keywordflow}{switch} (ID) \{}
+\DoxyCodeLine{132             \textcolor{keywordflow}{case} ITEMID\_AMMOBOX:}
+\DoxyCodeLine{133                 ptr = \textcolor{keyword}{new} AmmoBox;}
+\DoxyCodeLine{134                 ptr-\/>load(is);}
+\DoxyCodeLine{135                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{136             \textcolor{keywordflow}{case} ITEMID\_FIRSTAIDKIT:}
+\DoxyCodeLine{137                 ptr = \textcolor{keyword}{new} FirstAidKit;}
+\DoxyCodeLine{138                 ptr-\/>load(is);}
+\DoxyCodeLine{139                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{140             \textcolor{keywordflow}{case} ITEMID\_WEAPON:}
+\DoxyCodeLine{141                 ptr = \textcolor{keyword}{new} Weapon;}
+\DoxyCodeLine{142                 ptr-\/>load(is);}
+\DoxyCodeLine{143                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{144             \}}
+\DoxyCodeLine{145             inventory.push\_back(ptr);}
+\DoxyCodeLine{146         \}}
+\DoxyCodeLine{147         \textcolor{keywordflow}{return} is;}
+\DoxyCodeLine{148     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_x_com_1_1_operative_a52bf323d0319e5cb0d1684b8a04a50f7}\label{class_x_com_1_1_operative_a52bf323d0319e5cb0d1684b8a04a50f7}} 
+\index{XCom::Operative@{XCom::Operative}!operator=@{operator=}}
+\index{operator=@{operator=}!XCom::Operative@{XCom::Operative}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_x_com_1_1_operative}{Operative}} \& X\+Com\+::\+Operative\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_x_com_1_1_operative}{Operative}} \&}]{copy }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+
+
+Копирующий оператор присваивания. 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em \mbox{[}copy\mbox{]}} & ссылка на экземпляр копирующего оперативника \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Ссылка на измененный экземпляр оперативника 
+\end{DoxyReturn}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{10                                                                    \{}
+\DoxyCodeLine{11         \textcolor{keywordflow}{if} (\textcolor{keyword}{this} != \&copy) \{}
+\DoxyCodeLine{12             callname = copy.callname;}
+\DoxyCodeLine{13             spriteID = copy.spriteID;}
+\DoxyCodeLine{14             inventory = copy.inventory;}
+\DoxyCodeLine{15             hand = copy.hand;}
+\DoxyCodeLine{16         \}}
+\DoxyCodeLine{17         \textcolor{keywordflow}{return} *\textcolor{keyword}{this};}
+\DoxyCodeLine{18     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_x_com_1_1_operative_a3ac76d28913d31d59ed20dafba06434a}\label{class_x_com_1_1_operative_a3ac76d28913d31d59ed20dafba06434a}} 
+\index{XCom::Operative@{XCom::Operative}!operator=@{operator=}}
+\index{operator=@{operator=}!XCom::Operative@{XCom::Operative}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_x_com_1_1_operative}{Operative}} \& X\+Com\+::\+Operative\+::operator= (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_x_com_1_1_operative}{Operative}} \&\&}]{move }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+
+
+Перемещающий оператор присваивания. 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em \mbox{[}move\mbox{]}} & r\+\_\+value ссылка на экземпляр перемещающего оперативника \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Ссылка на измененный экземпляр класса
+\end{DoxyReturn}
+Желателен, т.\+к. и для \mbox{\hyperlink{classmystd_1_1_table}{mystd\+::\+Table}}, и для string предусмотрена семантика перемещения \begin{DoxySeeAlso}{См. также}
+\mbox{\hyperlink{classmystd_1_1_table}{mystd\+::\+Table}} 
+\end{DoxySeeAlso}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{21                                                               \{}
+\DoxyCodeLine{22         callname.swap(move.callname);}
+\DoxyCodeLine{23         \textcolor{keywordtype}{char} tmp = move.spriteID;}
+\DoxyCodeLine{24         move.spriteID = spriteID;}
+\DoxyCodeLine{25         spriteID = tmp;}
+\DoxyCodeLine{26         inventory.swap(move.inventory);}
+\DoxyCodeLine{27         Weapon* wp = move.hand;}
+\DoxyCodeLine{28         move.hand = hand;}
+\DoxyCodeLine{29         hand = wp;}
+\DoxyCodeLine{30         \textcolor{keywordflow}{return} *\textcolor{keyword}{this};}
+\DoxyCodeLine{31     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_x_com_1_1_operative_a9a7e51446e48649c9a043bddb74b379e}\label{class_x_com_1_1_operative_a9a7e51446e48649c9a043bddb74b379e}} 
+\index{XCom::Operative@{XCom::Operative}!print@{print}}
+\index{print@{print}!XCom::Operative@{XCom::Operative}}
+\doxysubsubsection{\texorpdfstring{print()}{print()}}
+{\footnotesize\ttfamily std\+::ostream \& X\+Com\+::\+Operative\+::print (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{os }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}, {\ttfamily [virtual]}, {\ttfamily [noexcept]}}
+
+
+
+Вывод информации об оперативнике 
+
+Защищенный виртуальный метод вывода информации об оперативнике
+
+Находится в protected области, чтобы доступ к ней имели и дочерние классы, но напрямую обращаться к ней было нельзя, т.\+е. вывод происходил только через перегруженный оператор
+
+То есть, при вызове перегруженного оператора вывода в дочерних классах будет вызываться ИХ метод print, а при использовании в них вывода для абстрактного класса, будет использоваться метод print базового класса. \begin{DoxySeeAlso}{См. также}
+\mbox{\hyperlink{class_x_com_1_1_creature}{Creature}} 
+\end{DoxySeeAlso}
+
+
+Переопределяет метод предка \mbox{\hyperlink{class_x_com_1_1_creature}{X\+Com\+::\+Creature}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{34                                                               \{}
+\DoxyCodeLine{35         os << \textcolor{stringliteral}{"{}�����������: "{}} << callname << \textcolor{stringliteral}{"{}; "{}};}
+\DoxyCodeLine{36         Creature::print(os);}
+\DoxyCodeLine{37         os << \textcolor{stringliteral}{"{} ������ � ����: "{}};}
+\DoxyCodeLine{38         \textcolor{keywordflow}{if} (hand)}
+\DoxyCodeLine{39             os << *hand;}
+\DoxyCodeLine{40         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{41             os << \textcolor{stringliteral}{"{}���;"{}};}
+\DoxyCodeLine{42         os << \textcolor{charliteral}{'\(\backslash\)n'};}
+\DoxyCodeLine{43         \mbox{\hyperlink{class_x_com_1_1_operative_a940df89bd8bd560c0ba651d14ea40e6f}{show\_table}}(os);}
+\DoxyCodeLine{44         \textcolor{keywordflow}{return} os;}
+\DoxyCodeLine{45     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_x_com_1_1_operative_a6c866cb464796fa94ac9ea686c5d35be}\label{class_x_com_1_1_operative_a6c866cb464796fa94ac9ea686c5d35be}} 
+\index{XCom::Operative@{XCom::Operative}!save@{save}}
+\index{save@{save}!XCom::Operative@{XCom::Operative}}
+\doxysubsubsection{\texorpdfstring{save()}{save()}}
+{\footnotesize\ttfamily std\+::ostream \& X\+Com\+::\+Operative\+::save (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{os }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}, {\ttfamily [noexcept]}}
+
+
+
+Вывод информации об оперативнике в выходной поток. 
+
+Используется для сохранения конфигурации оперативника в файл
+
+Порядок сохранения\+: Creature\+::save + callname + inventory.\+size() + предметы + hand 
+\begin{DoxyParams}{Аргументы}
+{\em \mbox{[}os\mbox{]}} & Ссылка на выходной поток \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Ссылка на тот же поток 
+\end{DoxyReturn}
+
+
+Переопределяет метод предка \mbox{\hyperlink{class_x_com_1_1_creature}{X\+Com\+::\+Creature}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{94                                                              \{}
+\DoxyCodeLine{95         Creature::save(os);}
+\DoxyCodeLine{96         \textcolor{keywordflow}{if} (hand) \{}
+\DoxyCodeLine{97             os << 1 << \textcolor{charliteral}{' '};}
+\DoxyCodeLine{98             hand-\/>save(os);}
+\DoxyCodeLine{99         \}}
+\DoxyCodeLine{100         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{101             os << 0 << \textcolor{charliteral}{' '};}
+\DoxyCodeLine{102         os << inventory.size() << \textcolor{charliteral}{'\(\backslash\)n'};}
+\DoxyCodeLine{103         \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} iter = inventory.begin(); iter != inventory.end(); ++iter)}
+\DoxyCodeLine{104             (*iter)-\/>save(os);}
+\DoxyCodeLine{105         \textcolor{keywordflow}{return} os;}
+\DoxyCodeLine{106     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_x_com_1_1_operative_ad23b2133afa23d58f31a52e439462152}\label{class_x_com_1_1_operative_ad23b2133afa23d58f31a52e439462152}} 
+\index{XCom::Operative@{XCom::Operative}!select\_item@{select\_item}}
+\index{select\_item@{select\_item}!XCom::Operative@{XCom::Operative}}
+\doxysubsubsection{\texorpdfstring{select\_item()}{select\_item()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_x_com_1_1_item}{Item}} $\ast$ X\+Com\+::\+Operative\+::select\+\_\+item (\begin{DoxyParamCaption}\item[{int}]{pos }\end{DoxyParamCaption})}
+
+
+
+Выбрать предмет. 
+
+Обратиться к какому-\/либо предмету по номеру, не вытаскивая его из инвентаря (например, перезарядиться или захиллиться) 
+\begin{DoxyParams}{Аргументы}
+{\em \mbox{[}pos\mbox{]}} & НОМЕР предмета (не индекс) в инвентаре \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Указатель на выбранный предмет 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Исключения}
+{\em Выход} & за границы размера инвентаря ($<$ 1 или $>$ size) \\
+\hline
+\end{DoxyExceptions}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{86                                         \{}
+\DoxyCodeLine{87         \textcolor{keywordflow}{if} (pos < 1 || pos > inventory.size())}
+\DoxyCodeLine{88             \textcolor{keywordflow}{throw} std::out\_of\_range(\textcolor{stringliteral}{"{}�������� � ����� ������� ��� � ���������. ���������� ��� ���."{}});}
+\DoxyCodeLine{89         \textcolor{keywordflow}{return} inventory[pos-\/-\/];}
+\DoxyCodeLine{90     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_x_com_1_1_operative_abfb3bd4fe405e01d47a900ed6757dd19}\label{class_x_com_1_1_operative_abfb3bd4fe405e01d47a900ed6757dd19}} 
+\index{XCom::Operative@{XCom::Operative}!set\_callname@{set\_callname}}
+\index{set\_callname@{set\_callname}!XCom::Operative@{XCom::Operative}}
+\doxysubsubsection{\texorpdfstring{set\_callname()}{set\_callname()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_x_com_1_1_operative}{Operative}}\& X\+Com\+::\+Operative\+::set\+\_\+callname (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{str }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+Изменить позывной оперативника. 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em \mbox{[}str\mbox{]}} & новое имя оперативника \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Ссылка на измененный экземпляр оперативника 
+\end{DoxyReturn}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{158 \{ callname = str; \textcolor{keywordflow}{return} *\textcolor{keyword}{this}; \};}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_x_com_1_1_operative_a940df89bd8bd560c0ba651d14ea40e6f}\label{class_x_com_1_1_operative_a940df89bd8bd560c0ba651d14ea40e6f}} 
+\index{XCom::Operative@{XCom::Operative}!show\_table@{show\_table}}
+\index{show\_table@{show\_table}!XCom::Operative@{XCom::Operative}}
+\doxysubsubsection{\texorpdfstring{show\_table()}{show\_table()}}
+{\footnotesize\ttfamily std\+::ostream \& X\+Com\+::\+Operative\+::show\+\_\+table (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{os }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+
+
+Вывод всего инвентаря. 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em \mbox{[}os\mbox{]}} & Ссылка на поток, куда выводить инвентарь \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Ссылка на этот же поток 
+\end{DoxyReturn}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{63                                                                    \{}
+\DoxyCodeLine{64         \textcolor{keywordflow}{if} (inventory.empty()) \{}
+\DoxyCodeLine{65             os << \textcolor{stringliteral}{"{}��������� ����.
+        \}
+        else \{
+            os << "{}���������:\(\backslash\)n"{};
+            int i = 1;
+            for (auto iter = inventory.begin(); iter != inventory.end(); ++iter)
+                os << "{} \#"{} << i++ << "{}: "{} << **iter << '\(\backslash\)n';
+        \}
+        return os;
+    \}
+\(\backslash\)n"{}};}
+\DoxyCodeLine{66         \}}
+\DoxyCodeLine{67         \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{68             os << \textcolor{stringliteral}{"{}���������:\(\backslash\)n"{}};}
+\DoxyCodeLine{69             \textcolor{keywordtype}{int} i = 1;}
+\DoxyCodeLine{70             \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} iter = inventory.begin(); iter != inventory.end(); ++iter)}
+\DoxyCodeLine{71                 os << \textcolor{stringliteral}{"{} \#"{}} << i++ << \textcolor{stringliteral}{"{}: "{}} << **iter << \textcolor{charliteral}{'\(\backslash\)n'};}
+\DoxyCodeLine{72         \}}
+\DoxyCodeLine{73         \textcolor{keywordflow}{return} os;}
+\DoxyCodeLine{74     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_x_com_1_1_operative_a4ef92c3694bb0d8be7222a54f869aa81}\label{class_x_com_1_1_operative_a4ef92c3694bb0d8be7222a54f869aa81}} 
+\index{XCom::Operative@{XCom::Operative}!size@{size}}
+\index{size@{size}!XCom::Operative@{XCom::Operative}}
+\doxysubsubsection{\texorpdfstring{size()}{size()}}
+{\footnotesize\ttfamily int X\+Com\+::\+Operative\+::size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+Получение кол-\/ва вещей в инвентаре. 
+
+\begin{DoxyReturn}{Возвращает}
+Кол-\/во вещей в инвентаре оперативника 
+\end{DoxyReturn}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{127 \{ \textcolor{keywordflow}{return} inventory.size(); \};}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_x_com_1_1_operative_ab504745453fe29ebf28768f366fed604}\label{class_x_com_1_1_operative_ab504745453fe29ebf28768f366fed604}} 
+\index{XCom::Operative@{XCom::Operative}!total\_weight@{total\_weight}}
+\index{total\_weight@{total\_weight}!XCom::Operative@{XCom::Operative}}
+\doxysubsubsection{\texorpdfstring{total\_weight()}{total\_weight()}}
+{\footnotesize\ttfamily double X\+Com\+::\+Operative\+::total\+\_\+weight (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+
+
+Получение суммарного веса инвентаря. 
+
+\begin{DoxyReturn}{Возвращает}
+Суммарный вес инвентаря 
+\end{DoxyReturn}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{55                                                   \{}
+\DoxyCodeLine{56         \textcolor{keywordtype}{double} res = 0;}
+\DoxyCodeLine{57         \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} iter = inventory.begin(); iter != inventory.end(); ++iter)}
+\DoxyCodeLine{58             res += iter-\/>get\_weight();}
+\DoxyCodeLine{59         \textcolor{keywordflow}{return} res;}
+\DoxyCodeLine{60     \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Документация по друзьям класса и функциям, относящимся к классу}
+\mbox{\Hypertarget{class_x_com_1_1_operative_a775eb81385cb5b31e4b09856dac5b7d7}\label{class_x_com_1_1_operative_a775eb81385cb5b31e4b09856dac5b7d7}} 
+\index{XCom::Operative@{XCom::Operative}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!XCom::Operative@{XCom::Operative}}
+\doxysubsubsection{\texorpdfstring{operator$<$$<$}{operator<<}}
+{\footnotesize\ttfamily std\+::ostream\& operator$<$$<$ (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{os,  }\item[{const \mbox{\hyperlink{class_x_com_1_1_operative}{Operative}} \&}]{oper }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Вывод информации об оперативнике в выходной поток. 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em \mbox{[}os\mbox{]}} & Ссылка на выходной поток \\
+\hline
+{\em \mbox{[}oper\mbox{]}} & Ссылка на экземпляр оперативника \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Ссылка на тот же выходной поток 
+\end{DoxyReturn}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{235 \{ \textcolor{keywordflow}{return} oper.print(os); \};}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_x_com_1_1_operative_a87cc9a416a776f46923bb68b4bc13bdd}\label{class_x_com_1_1_operative_a87cc9a416a776f46923bb68b4bc13bdd}} 
+\index{XCom::Operative@{XCom::Operative}!operator$>$$>$@{operator$>$$>$}}
+\index{operator$>$$>$@{operator$>$$>$}!XCom::Operative@{XCom::Operative}}
+\doxysubsubsection{\texorpdfstring{operator$>$$>$}{operator>>}}
+{\footnotesize\ttfamily std\+::istream\& operator$>$$>$ (\begin{DoxyParamCaption}\item[{std\+::istream \&}]{is,  }\item[{\mbox{\hyperlink{class_x_com_1_1_operative}{Operative}} \&}]{oper }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Загрузка информации об оперативнике из входного/файлового потока. 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em \mbox{[}is\mbox{]}} & Ссылка на входной поток \\
+\hline
+{\em \mbox{[}oper\mbox{]}} & Ссылка на экземпляр оперативника \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Ссылка на тот же входной поток 
+\end{DoxyReturn}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{242 \{ \textcolor{keywordflow}{return} oper.load(is); \};}
+
+\end{DoxyCode}
+
+
+Объявления и описания членов классов находятся в файлах\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_operative_8h}{Operative.\+h}}\item 
+Operative.\+cpp\end{DoxyCompactItemize}

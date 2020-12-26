@@ -2,11 +2,18 @@
 #define LEVEL_H
 
 
-// Класс Самой игрушки
+/*!
+	\mainpage XCom "Pocket Edition"
+	Документация к реализации и иерархии классов, описывающих стратегическую пошаговую игру, копирующую геймплей XCom'а
+
+	 На данный момент реализована базовая часть, позволяющая сохранять/загружать данные в редактор уровней
+*/
+
 namespace XCom {
 
 	// forward declaration
 	class Cell;
+
 
 	// Шаблон функции проверки ввода данных (1 в случае неудачи, и 0 при успехе)
 	template <class T>
@@ -50,20 +57,21 @@ namespace XCom {
 	но нужно будет реализовать взаимодействие этого типа с существами
 	 */
 		static const std::string sprites;
-		/*
-			Символы, обозначающие классы пришельцев на консольной карте
-		Порядок:
-			[0] - криссалид;
-			[1] - фуражир;
-			[2] - разумное существо;
-		Для всех оперативников переменная marking = 0, а выводиться на карту будет символ-позывной (callsign), который вводится при создании оперативника
-		*/
-		static const std::string markingAlien;
 
-		std::list<Creature*> squadOperative;				// Тима оперативников
-		std::list<Creature*> squadAliens;					// Тима пришельцев
-		std::vector<std::vector<Cell>> field;				// Само игровое поле (прямоугольное)
-		std::vector<Ammo> ammo;								// Типы патронов в игре
+	/*
+	Символы, обозначающие классы пришельцев на консольной карте
+		Порядок:
+	[0] - Фуражир (Porter);
+	[1] - Дикое существо (Chryssalid);
+	[2] - Разумное существо (Muton);
+		Для всех оперативников переменная marking = 0, а выводиться на карту будет символ-позывной (callsign), который вводится при создании оперативника
+	*/
+		static const std::string markingAliens;
+
+		std::vector<Creature*> squadOperative;				// Команда оперативников
+		std::vector<Creature*> squadAliens;					// Команда пришельцев
+		std::vector<std::vector<Cell>> field;				// Само прямоугольное игровое поле
+		std::vector<Ammo*> ammo;							// Типы патронов в игре
 
 
 	public:
@@ -109,16 +117,21 @@ namespace XCom {
 		// Получить спрайты карты (для установки типа клетки)
 		static const std::string get_sprites() noexcept { return sprites; };
 
+		// Получить спрайты существ
+		static const std::string get_markingAliens() noexcept { return markingAliens; };
+
 		/********************************************************/
 		/*						Сеттеры							*/
 		/********************************************************/
 
 		// Получить доступ к вектору типов патронов
-		std::vector<Ammo>& get_access_to_ammo() { return ammo; };
+		std::vector<Ammo*>& get_access_to_ammo() { return ammo; };
 
 		// Все пареметры принимают не индекс массива (от 0 до n - 1/m - 1), а номер клетки (от 1 до n/m) 
 
-
+		std::vector<Creature*>& access_to_teamOperative() { return squadOperative; };
+		std::vector<Creature*>& access_to_teamAliens() { return squadAliens; };	
+		std::vector<std::vector<Cell>>& acess_to_field() { return field; };
 
 		// Устанавливает размеры игрового поля (и создает соотв. поле из клеток по умолчанию); при создании нового поля, старое стирается
 		Level& set_proportions(int, int);
@@ -135,6 +148,14 @@ namespace XCom {
 		/********************************************************/
 		/*					Другие методы						*/
 		/********************************************************/
+
+		/*
+			Процесс уничтожения (смерти) существа: для каждого класса существа свой процесс стирания его с поля.
+		(ВНИМАНИЕ! ПРИ ДОБАВЛЕНИИ НОВОГО КЛАССА СУЩЕСТВА СЮДА НЕОБХОДИМО ДОБАВИТЬ СООТВЕТСВУЮЩИЙ КЕЙС!!!)
+		*/
+		Level& destruction(Creature*&);
+
+		std::ostream& save(std::ostream&);
 
 		// Ввод игрового поля
 		friend std::istream& operator >> (std::istream&, Level&);

@@ -1,0 +1,65 @@
+\hypertarget{class_x_com_1_1_muton}{}\doxysection{РљР»Р°СЃСЃ X\+Com\+::Muton}
+\label{class_x_com_1_1_muton}\index{XCom::Muton@{XCom::Muton}}
+
+
+Класс пришельца \char`\"{}Размуное существо\char`\"{}.  
+
+
+
+
+{\ttfamily \#include $<$Muton.\+h$>$}
+
+Р“СЂР°С„ РЅР°СЃР»РµРґРѕРІР°РЅРёСЏ\+:X\+Com\+::Muton\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_x_com_1_1_muton}
+\end{center}
+\end{figure}
+\doxysubsection*{РћС‚РєСЂС‹С‚С‹Рµ С‡Р»РµРЅС‹}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_x_com_1_1_muton_ad9a560d64ae170602623fde9f1eec160}\label{class_x_com_1_1_muton_ad9a560d64ae170602623fde9f1eec160}} 
+{\bfseries Muton} (\mbox{\hyperlink{class_x_com_1_1_weapon}{Weapon}} $\ast$wp=nullptr) noexcept
+\item 
+\mbox{\Hypertarget{class_x_com_1_1_muton_a1a267460a025caa22e805b9ba8fc5a7a}\label{class_x_com_1_1_muton_a1a267460a025caa22e805b9ba8fc5a7a}} 
+const \mbox{\hyperlink{class_x_com_1_1_weapon}{Weapon}} $\ast$ {\bfseries get\+\_\+hand} () const noexcept
+\item 
+\mbox{\Hypertarget{class_x_com_1_1_muton_ad0371d43f6da658e3531210cd73fa333}\label{class_x_com_1_1_muton_ad0371d43f6da658e3531210cd73fa333}} 
+\mbox{\hyperlink{class_x_com_1_1_weapon}{Weapon}} $\ast$ {\bfseries change\+\_\+weapon} (\mbox{\hyperlink{class_x_com_1_1_weapon}{Weapon}} $\ast$) noexcept
+\item 
+\mbox{\Hypertarget{class_x_com_1_1_muton_ab19bcd19eb4db85c5488010e77807c36}\label{class_x_com_1_1_muton_ab19bcd19eb4db85c5488010e77807c36}} 
+virtual \mbox{\hyperlink{class_x_com_1_1_muton}{Muton}} $\ast$ {\bfseries clone} () const noexcept override
+\item 
+\mbox{\Hypertarget{class_x_com_1_1_muton_acc916b2e9c8a31a293f955c44ddac0c0}\label{class_x_com_1_1_muton_acc916b2e9c8a31a293f955c44ddac0c0}} 
+virtual std\+::ostream \& {\bfseries save} (std\+::ostream \&) const noexcept override
+\item 
+\mbox{\Hypertarget{class_x_com_1_1_muton_a337f994f1c377affb65a83a8a446e48f}\label{class_x_com_1_1_muton_a337f994f1c377affb65a83a8a446e48f}} 
+virtual std\+::istream \& {\bfseries load} (std\+::istream \&) noexcept override
+\end{DoxyCompactItemize}
+\doxysubsection*{Р—Р°С‰РёС‰РµРЅРЅС‹Рµ С‡Р»РµРЅС‹}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_x_com_1_1_muton_a8368a5ee319936f6103cb6deccabc7b3}\label{class_x_com_1_1_muton_a8368a5ee319936f6103cb6deccabc7b3}} 
+virtual std\+::ostream \& {\bfseries print} (std\+::ostream \&) const noexcept override
+\end{DoxyCompactItemize}
+\doxysubsection*{Р”СЂСѓР·СЊСЏ}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_x_com_1_1_muton_a5ba03a6b95e5ea522c6cecd4cd4612b4}\label{class_x_com_1_1_muton_a5ba03a6b95e5ea522c6cecd4cd4612b4}} 
+std\+::ostream \& {\bfseries operator$<$$<$} (std\+::ostream \&os, const \mbox{\hyperlink{class_x_com_1_1_muton}{Muton}} \&por)
+\item 
+\mbox{\Hypertarget{class_x_com_1_1_muton_a2812d39e3befe734342cf5c266767d70}\label{class_x_com_1_1_muton_a2812d39e3befe734342cf5c266767d70}} 
+std\+::istream \& {\bfseries operator$>$$>$} (std\+::istream \&is, \mbox{\hyperlink{class_x_com_1_1_muton}{Muton}} \&mut) noexcept
+\end{DoxyCompactItemize}
+\doxysubsection*{Р”РѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Рµ СѓРЅР°СЃР»РµРґРѕРІР°РЅРЅС‹Рµ С‡Р»РµРЅС‹}
+
+
+\doxysubsection{РџРѕРґСЂРѕР±РЅРѕРµ РѕРїРёСЃР°РЅРёРµ}
+Класс пришельца \char`\"{}Размуное существо\char`\"{}. 
+
+Является производным классом базового абстрактного класса \char`\"{}Существо\char`\"{}; не имеет инвентаря, но может держать в руках оружие, выкидывать его и подбирать новое 
+
+РћР±СЉСЏРІР»РµРЅРёСЏ Рё РѕРїРёСЃР°РЅРёСЏ С‡Р»РµРЅРѕРІ РєР»Р°СЃСЃРѕРІ РЅР°С…РѕРґСЏС‚СЃСЏ РІ С„Р°Р№Р»Р°С…\+:\begin{DoxyCompactItemize}
+\item 
+Muton.\+h\item 
+Muton.\+cpp\end{DoxyCompactItemize}

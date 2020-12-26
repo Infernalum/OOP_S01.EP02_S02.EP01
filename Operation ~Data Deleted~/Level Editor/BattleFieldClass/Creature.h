@@ -4,58 +4,62 @@
 
 namespace XCom {
 
+
+	/*
+		Перечисление типов существ. У каждого оперативника свой индивидуальный чар спрайта,
+	а вот пришельцы одного типа не должны друг от друга отличаться (начинаем с нуля, чтобы индексация в спрайтах пришельцев работала дефолтно)
+	*/
+	enum CreatureID {
+		CREATUREID_OPERATIVE = -1,
+		CREATUREID_PORTER,
+		CREATUREID_CHRYSSALID,
+		CREATUREID_MUTON,
+	};
+
+
 	// Базовый абстрактный класс "Существо"
 	class Creature {
 
-		//static const std::string fraction;	// "Тип" существа (к какой стороне пренадлежит - "Alien" или "Operative")"
-		std::pair<int, int> coords;				// Координаты клетки, на которой стоит существо
-		int HP, maxHP;							// Текущее \ максимальное кол-во очков здоровья
-		int evasion;							// Параметр уклонения существа: снижает шанс попадания (варьируется от 0 - нет бонуса, до 100% - уменьшает шанс в 2 раза)
-		int accuracy;							// Параметр точности существа: показывает, каков шанс нанести урон от стандартного шанса оружием. 0 - шансов нет (ослеплен), 100 - обычная точность
-		int TP, maxTP;							// Текущее \ максимальное кол-во очков времени
-		int sight;								// Радиус обзора существа
+		// Координаты клетки, на которой стоит существо
+		std::pair<int, int> coords;
+		// Текущее \ максимальное кол-во очков здоровья
+		int HP, maxHP;
+		// Параметр уклонения существа: снижает шанс попадания (варьируется от 0 - нет бонуса, до 100% - уменьшает шанс в 2 раза)
+		int evasion;
+		// Параметр точности существа: показывает, каков шанс нанести урон от стандартного шанса оружием. 0 - шансов нет (ослеплен), 100 - обычная точность
+		int accuracy;
+		// Текущее \ максимальное кол-во очков времени
+		int TP, maxTP;
+		// Радиус обзора существа
+		int sight;
 
 	protected:
 
-		// Символ, которым будет обозначаться данный класс существ на карте
-		char marking;
+		// Идентификатор существа (см. enum в классе "Level")
+		int ID;
 
-
-
-		/* В protected область добавляем функцию вывода, чтобы доступ к ней имели и дочерние классы,
+		/*
+			В protected область добавляем функцию вывода, чтобы доступ к ней имели и дочерние классы,
 		но напрямую обращаться к ней было нельзя, т.е. вывод происходил только через перегруженный оператор
 		То есть, при вызове перегруженного оператора вывода в дочерних классах будет вызываться ИХ метод print,
 		а при использовании в них вывода для абстрактного класса, будет использоваться метод print базового класса.
 		*/
-		virtual std::ostream& print(std::ostream&) const;
-
-		/*
-	Сохранение базовой информации о существе:
-	'x'_'y'_'HP'_'maxHP'_'evasion'_'accuracy'_'TP'_'maxTP'_'sight'
-		*/
-		virtual std::ostream& save(std::ostream&) const noexcept;
-
-		// Загрузка базовой информации о существе из входного/файлового потока
-		virtual std::istream& load(std::istream&) noexcept;
+		virtual std::ostream& print(std::ostream&) const noexcept;
 
 
 	public:
-
-		virtual const char name() const = 0;
-
-
 
 		/********************************************************/
 		/*					 Конструкторы						*/
 		/********************************************************/
 
 		// Конструктор существа по умолчанию; менять максимальные хар-ки будем через сеттеры
-		Creature(int s = 1, int mh = 1, int mtp = 1, int mw = 1)
-			: coords{ -1,-1 }, evasion(0), accuracy(100) { set_sight(s); set_HP(mh), set_maxHP(mh), set_TP(mtp), set_maxTP(mtp); };
+		Creature(int t = -1, int s = 1, int mh = 1, int mtp = 1, int mw = 1)
+			: ID(t), coords{ -1,-1 }, evasion(0), accuracy(100) { set_sight(s); set_maxHP(mh), set_HP(mh), set_maxTP(mtp), set_TP(mtp); };
 
 
 		// Виртуальная функция создания копии существа
-		virtual Creature* clone() const = 0;
+		virtual Creature* clone() const noexcept = 0;
 
 		// Виртуальный деструктор
 		virtual ~Creature() {};
@@ -66,6 +70,7 @@ namespace XCom {
 
 		// Получение базовых характеристик абстрактного класса
 
+		int get_ID() const noexcept { return ID; };
 		int get_x() const noexcept { return coords.first; };
 		int get_y() const noexcept { return coords.second; };
 		int get_HP() const noexcept { return HP; };
@@ -98,20 +103,22 @@ namespace XCom {
 		void set_sight(int);
 		void set_evasion(int);
 		void set_accuracy(int);
-		std::pair<int, int>& change_coords() { return coords; };
 
 		/********************************************************/
 		/*					Остальные методы					*/
 		/********************************************************/
 
-		// Чисто виртуальная функция проверки попадания по существу: принимается указатель на атакуемое существо и возвращается кол-во нанесенного урона
-		virtual int get_damage(Creature*) = 0;
-
+		/*
+			Сохранение базовой информации о существе:
+		'x'_'y'_'HP'_'maxHP'_'evasion'_'accuracy'_'TP'_'maxTP'_'sight'
+		*/
+		virtual std::ostream& save(std::ostream&) const noexcept;
 
 		// Загрузка базовой информации о существе из входного/файлового потока
-		friend std::istream& operator >>(std::istream& is, Creature& ammobox) noexcept { return ammobox.load(is); };
+		virtual std::istream& load(std::istream&) noexcept;
 
-
+		// Вывод базовой информации о существе (не для сохранения в файл)
+		friend std::ostream& operator <<(std::ostream& os, const Creature& cr) noexcept { return cr.print(os); };
 
 	};
 

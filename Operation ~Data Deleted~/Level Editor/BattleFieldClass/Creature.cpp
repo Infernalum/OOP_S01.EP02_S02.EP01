@@ -1,5 +1,4 @@
 #include "pch.h"
-#include "Creature.h"
 
 
 namespace XCom {
@@ -100,55 +99,32 @@ namespace XCom {
 
 
 
-	std::ostream& Creature::print(std::ostream& os) const {
-		os << "Координаты: ";
+	std::ostream& Creature::print(std::ostream& os) const noexcept {
+		os << "координаты: ";
 		if (coords.first < 0 || coords.second < 0)
 			os << "undefined";
 		else
 			os << coords.first << '\\' << coords.second;
-		return os << "; Радиус обзора: " << sight << "; HP: " << HP << '\\' << maxHP << "; Очки времени: " << TP << '\\' << maxTP << ";";
+		return os << "; радиус обзора: " << sight << "; HP: " << HP << '\\' << maxHP << "; TP: " << TP << '\\' << maxTP << ";\n";
 	}
 
 	std::ostream& Creature::save(std::ostream& os) const noexcept {
-		os << marking << ' ' << coords.first << ' ' << coords.second << ' ' << HP << ' ' << maxHP << ' ' << evasion << ' ' << accuracy << ' ' << TP << ' ' << maxTP << ' ' << sight << ' ';
+		os << ID << ' ' << coords.first << ' ' << coords.second << ' ' << HP << ' ' << maxHP << ' ' << evasion << ' ' << accuracy << ' ' << TP << ' ' << maxTP << ' ' << sight << ' ';
 		return os;
 	}
 
 
 
 	std::istream& Creature::load(std::istream& is) noexcept {
-		int _int;
-		double _double;
-		std::string name;
-		is >> _int;
-		set_x(_int);
-		is.ignore();
-		is >> _int;
-		set_y(_int);
-		is.ignore();
-		is >> _int;
-		set_HP(_int);
-		is.ignore();
-		is >> _int;
-		set_maxHP(_int);
-		is.ignore();
-		is >> _int;
-		set_evasion(_int);
-		is.ignore();
-		is >> _int;
-		set_accuracy(_int);
-		is.ignore();
-		is >> _int;
-		set_TP(_int);
-		is.ignore();
-		is >> _int;
-		set_maxTP(_int);
-		is.ignore();
-		is >> _int;
-		set_sight(_int);
-		is.ignore();
-		// Игнорируем всю оставшуюся строку, так, на всякий
-		is.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		is >> coords.first;
+		is.ignore() >> coords.second;
+		is.ignore() >> HP;
+		is.ignore() >> maxHP;
+		is.ignore() >> evasion;
+		is.ignore() >> accuracy;
+		is.ignore() >> TP;
+		is.ignore() >> maxTP;
+		is.ignore() >> sight;
 		return is;
 	}
 

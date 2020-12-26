@@ -33,8 +33,8 @@ namespace XCom {
 		species(Level::get_sprites()[0]),
 		itemList(),
 		creature(),
-		fog(false),
-		visible(false) {};
+		fog(true),
+		visible(true) {};
 
 	//  онструктор, задающий тип спрайта («адавать указатель на существо во врем€ инициализации пол€ Ќ≈Ћ№«я априори; поэтому он всегда nullptr.  роме того, индекс спрайта должен существовать)
 	Cell::Cell(int iSprites) : fog(false), visible(false) {
@@ -60,6 +60,8 @@ namespace XCom {
 	//  опирующий оператор присваивани€: точно так же не удал€ет уже прив€занное существо
 	Cell& Cell::operator = (const Cell& copy) noexcept {
 		if (this != &copy) {
+			fog = copy.fog;
+			visible = copy.visible;
 			species = copy.species;
 			creature = copy.creature;
 			for (auto iter = copy.itemList.begin(); iter != copy.itemList.end(); ++iter)
@@ -74,6 +76,8 @@ namespace XCom {
 		≈динственное принципиальное отличие в том, что предметы не копируютс€, а переприв€зываютс€ к клетке
 	*/
 	Cell::Cell(Cell&& move) noexcept :
+		fog(move.fog),
+		visible(move.visible),
 		species(move.species),
 		creature(move.creature),
 		itemList(move.itemList) {
@@ -90,9 +94,7 @@ namespace XCom {
 		Creature* tmpCreature = move.creature;
 		move.creature = creature;
 		creature = tmpCreature;
-		mystd::Table<Item*> tmpList = move.itemList;
-		move.itemList = itemList;
-		itemList = tmpList;
+		itemList.swap(move.itemList);
 		return *this;
 	}
 
@@ -156,7 +158,7 @@ namespace XCom {
 			os << "вещей нет." << '\n';
 		int i = 1;
 		for (auto iter = itemList.begin(); iter != itemList.end(); ++iter)
-			os << "є" << i++ << ": " << *iter << '\n';
+			os << "є" << i++ << ": " << **iter << '\n';
 		return os;
 	}
 
@@ -199,7 +201,7 @@ namespace XCom {
 	// ¬ывод клетки
 	std::ostream& operator << (std::ostream& os, const Cell& cell) {
 		// ≈сли она невидима глобально (fog true), то знак '?' (невидимость)
-		if (cell.fog)
+		if (!cell.fog)
 			os << '?';
 		// ≈сли она была засвечена, но в данный момент невидима(visible false), то отображаетс€ тип клетки;
 		else if (!cell.visible)
@@ -207,7 +209,10 @@ namespace XCom {
 		// ≈сли она была засвечена, и засвечена до сих пор (visible true), то отображаетс€ либо враг, сто€щий на ней, либо предметы, если врага нет, либо тип клетки, если ни того, ни другого нет
 		else {
 			if (cell.creature)
-				os << cell.creature->name();
+				if (cell.creature->get_ID() != CREATUREID_OPERATIVE)
+					os << Level::get_markingAliens()[cell.creature->get_ID()];
+				else
+					os << dynamic_cast<Operative*>(cell.creature)->get_spriteID();
 			else if (!cell.empty())
 				os << Level::get_sprites()[5];
 			else
@@ -216,6 +221,13 @@ namespace XCom {
 		return os;
 	}
 
+
+	std::ostream& Cell::save(std::ostream& os) const noexcept {
+		os << get_species() << ' ' << itemList.size() << '\n';
+		for (auto iter = itemList.begin(); iter != itemList.end(); ++iter)
+			(*iter)->save(os);
+		return os;
+	}
 
 }
 
