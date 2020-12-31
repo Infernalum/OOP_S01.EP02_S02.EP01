@@ -36,6 +36,7 @@ namespace XCom {
 		fog(true),
 		visible(true) {};
 
+
 	// Конструктор, задающий тип спрайта (Задавать указатель на существо во время инициализации поля НЕЛЬЗЯ априори; поэтому он всегда nullptr. Кроме того, индекс спрайта должен существовать)
 	Cell::Cell(int iSprites) : fog(false), visible(false) {
 		if (iSprites < 0 || iSprites >= (int)Level::get_sprites().size())
@@ -43,6 +44,7 @@ namespace XCom {
 		species = Level::get_sprites()[iSprites];
 		creature = nullptr;
 	}
+
 
 	// Копирующий конструктор (В соответсвиями с описанием выше)
 	Cell::Cell(const Cell& copy) noexcept :
@@ -71,26 +73,11 @@ namespace XCom {
 	}
 
 
-	/*
-		Перемещающий конструктор (НЕ удаляет ничего, что связано с клеткой)
-		Единственное принципиальное отличие в том, что предметы не копируются, а перепривязываются к клетке
-	*/
-	Cell::Cell(Cell&& move) noexcept :
-		fog(move.fog),
-		visible(move.visible),
-		species(move.species),
-		creature(move.creature),
-		itemList(move.itemList) {
-		move.creature = nullptr;
-		move.itemList.clear();
-	}
-
-
 	// Перемещающий оператор присваивания
 	Cell& Cell::operator = (Cell&& move) noexcept {
-		char tmpSpecies = move.species;
-		move.species = species;
-		species = tmpSpecies;
+		std::swap(species, move.species);
+		std::swap(fog, move.fog);
+		std::swap(visible, move.visible);
 		Creature* tmpCreature = move.creature;
 		move.creature = creature;
 		creature = tmpCreature;
@@ -99,7 +86,7 @@ namespace XCom {
 	}
 
 
-	// Дестуктор (Подразумевается, что при удалении привязанное существо остается в памяти, а вот дропнутые предметы так как не имеют больше связи ни с чем, удаляются вместе с клеткой)
+	// Дестуктор (Подразумевается, что при удалении привязанное существо остается в памяти, а вот трупы так как не имеют больше связи ни с чем, удаляются вместе с клеткой)
 	Cell::~Cell() {
 		if (!itemList.empty())
 			for (auto iter = itemList.begin(); iter != itemList.end(); ++iter)

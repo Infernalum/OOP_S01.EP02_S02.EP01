@@ -35,7 +35,7 @@ namespace XCom {
 
 	protected:
 
-		// Идентификатор существа (см. enum в классе "Level")
+		// Идентификатор существа (см. enum CreatureID)
 		int ID;
 
 		/*
