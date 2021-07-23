@@ -2,4 +2,6 @@ TEMPLATE = subdirs
 
 SUBDIRS += \
 	CetaneryLib \
-	lab
+	gtest \
+	lab \
+	test1_2
