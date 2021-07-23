@@ -1,4 +1,4 @@
-#include "Lab1_1.h"
+#include "lab1_1.h"
 
 const char* msgs[] = {
     "0. Выйти\n",
