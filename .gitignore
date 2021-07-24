@@ -27,6 +27,8 @@ qrc_*.cpp
 ui_*.h
 *.qmlc
 *.jsc
+*.Release
+*.Debug
 Makefile*
 *build-*
 *.qm
