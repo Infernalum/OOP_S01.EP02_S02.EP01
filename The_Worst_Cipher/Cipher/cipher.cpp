@@ -56,6 +56,7 @@ int cipherProcess() {
   std::cout << resultWord;
   qtConsole("\n Ключ к строке: ");
   std::cout << quaToHex(resultKey);
+  std::cout << "\n";
   return 1;
 }
 
@@ -321,8 +322,8 @@ void decipherWord(const std::string& key, std::string& word) {
       now = 0;
       opStack += now;
     }
-    iWord++;
-    iKey++;
+    ++iWord;
+    ++iKey;
   }
   // Когда выражение полностью обработано, его результат находится в стеке.
   // Выталкиваем его из opStack
@@ -358,7 +359,7 @@ int decipherProcess() {
       resultWord += ' ';
   }
   qtConsole("Расшифрованная строка: ");
-  std::cout << resultWord;
+  std::cout << resultWord << std::endl;
   return 1;
 }
 
