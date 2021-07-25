@@ -1,0 +1,1 @@
+![Alt-текст](https://github.com/Infernalum/OOP_S01.EP02_S02.EP01/blob/master/Operation%20~Data%20Deleted~/cpp4_varP_khrapov.pdf)
