@@ -4,4 +4,4 @@
 ### [Лаб. работа #2: Реализация собственного библиотечного класса математической кривой "Цепная линия"](https://github.com/Infernalum/OOP_S01.EP02_S02.EP01/tree/master/lab1_2)
 ### [Лаб. работа #3: Класс "Карточная колода" (Перегрузка операторов, динамическая память и семантика перемещения)](https://github.com/Infernalum/OOP_S01.EP02_S02.EP01/tree/master/lab2)
 ### [Лаб. работа #3.2: Шифр на основе обратной польской нотации (прикладная программа, использующая реализацию чужого класса)](https://github.com/Infernalum/OOP_S01.EP02_S02.EP01/tree/master/The_Worst_Cipher)
-### [Проектная работа: игровое приложение "Операция '*~~Данные удалены~~*'"](https://github.com/Infernalum/OOP_S01.EP02_S02.EP01/tree/master/Operation%20~Data%20Deleted~)
+### [Проектная работа: Игровое приложение "Операция '*~~Данные удалены~~*'"](https://github.com/Infernalum/OOP_S01.EP02_S02.EP01/tree/master/Operation%20~Data%20Deleted~)
