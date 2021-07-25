@@ -1,1 +1,2 @@
-![Alt-текст](https://github.com/Infernalum/OOP_S01.EP02_S02.EP01/blob/master/Operation%20~Data%20Deleted~/cpp4_varP_khrapov.pdf)
+![Alt-текст](https://github.com/Infernalum/OOP_S01.EP02_S02.EP01/blob/master/Operation%20~Data%20Deleted~/requests/1.png)
+![Alt-текст](https://github.com/Infernalum/OOP_S01.EP02_S02.EP01/blob/master/Operation%20~Data%20Deleted~/requests/2.png)
